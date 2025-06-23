@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人展示墙</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <div id="root">
+        <div class="main">
+            <div data-panel="personal">个人</div>
+            <div data-panel="skills">技术</div>
+            <div data-panel="hobbies">爱好</div>
+            <div data-panel="contact">联系</div>
+            <div class="avatar">
+                <img style="width: 100%; height: 100%; object-fit: cover;" src="./img/v2.jpg" alt="">
+            </div>
+        </div>
+
+        <!-- 内容面板 -->
+        <div class="content-panel" id="content-panel">
+            <div class="panel-header">
+                <h2 class="panel-title">标题</h2>
+                <button class="close-btn">×</button>
+            </div>
+            <div class="panel-content">
+                <!-- 个人面板 -->
+                <div class="panel" id="personal-panel">
+                    <div class="personal-container">
+                        <div class="personal-card">
+                            <div class="personal-avatar">
+                                <img src="./img/usr.png" alt="个人头像">
+                            </div>
+                            <div class="personal-info">
+                                <h3>颜昌龙</h3>
+                                <h4>前端工程师</h4>
+                            </div>
+                        </div>
+                        <div class="personal-about">
+                            <h4>关于我</h4>
+                            <p>我是一名充满激情的前端工程师，毕业于吉首大学，专注于创建用户友好的网页体验。拥有扎实的HTML、CSS和JavaScript基础，熟练掌握现代前端框架如React和Vue。</p>
+                            <div class="personal-details">
+                                <div class="detail-item">
+                                    <span class="detail-label">年龄:</span>
+                                    <span class="detail-value">22</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">所在地:</span>
+                                    <span class="detail-value">福州</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">工作经验:</span>
+                                    <span class="detail-value">应届生</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">学历:</span>
+                                    <span class="detail-value">本科</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 技术面板 -->
+                <div class="panel" id="skills-panel">
+                    <div class="skills-container">
+                        <div class="skill-card" title="Java">
+                            <div class="skill-icon">
+                                <img src="./img/skill/java.png" alt="Java">
+                            </div>
+                            <h4>Java</h4>
+                            
+                            
+                        </div>
+                        <div class="skill-card" title="Linux">
+                            <div class="skill-icon">
+                                <img src="./img/skill/linux.png" alt="Linux">
+                            </div>
+                            <h4>Linux</h4>
+                            
+                        </div>
+                        <div class="skill-card" title="Python">
+                            <div class="skill-icon">
+                                <img src="./img/skill/python.png" alt="Python">
+                            </div>
+                            <h4>Python</h4>
+                           
+                        </div>
+                        <div class="skill-card" title="React">
+                            <div class="skill-icon">
+                                <img src="./img/skill/react.png" alt="React">
+                            </div>
+                            <h4>React</h4>
+                            
+                        </div>
+                        <div class="skill-card" title="TypeScript">
+                            <div class="skill-icon">
+                                <img src="./img/skill/ts.png" alt="TypeScript">
+                            </div>
+                            <h4>TypeScript</h4>
+                            
+                        </div>
+                        <div class="skill-card" title="Vite">
+                            <div class="skill-icon">
+                                <img src="./img/skill/vite.png" alt="Vite">
+                            </div>
+                            <h4>Vite</h4>
+                           
+                        </div>
+                        <div class="skill-card" title="Vue">
+                            <div class="skill-icon">
+                                <img src="./img/skill/vue.png" alt="Vue">
+                            </div>
+                            <h4>Vue</h4>
+                           
+                        </div>
+                        <div class="skill-card" title="Webpack">
+                            <div class="skill-icon">
+                                <img src="./img/skill/webpack.png" alt="Webpack">
+                            </div>
+                            <h4>Webpack</h4>
+                           
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 爱好面板 -->
+                <div class="panel" id="hobbies-panel">
+                    <h3 class="hobby-title">个人爱好</h3>
+                    <div class="hobbies-container">
+                        <div class="hobby-item">
+                            <div class="hobby-icon">📚</div>
+                            <h4>阅读</h4>
+                            <p>喜欢阅读技术书籍和科幻小说，尤其是刘慈欣的《三体》系列</p>
+                        </div>
+                        <div class="hobby-item">
+                            <div class="hobby-icon">🎮</div>
+                            <h4>游戏</h4>
+                            <p>热爱电子游戏，特别是开放世界</p>
+                        </div>
+                        <div class="hobby-item">
+                            <div class="hobby-icon">🏃</div>
+                            <h4>运动</h4>
+                            <p>每周跑步和健身，保持身体健康和精力充沛</p>
+                        </div>
+                        <div class="hobby-item">
+                            <div class="hobby-icon">🎵</div>
+                            <h4>音乐</h4>
+                            <p>喜欢听各种类型的音乐</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 联系面板 -->
+                <div class="panel" id="contact-panel">
+                    <h3 class="contact-title">联系方式</h3>
+                    <div class="contact-container">
+                        <div class="contact-item">
+                            <div class="contact-icon">📧</div>
+                            <h4>邮箱</h4>
+                            <p><a href="mailto:yanchanglong2004@163.com">yanchanglong2004@163.com</a></p>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">📱</div>
+                            <h4>电话</h4>
+                            <p>15580266585</p>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">💬</div>
+                            <h4>微信</h4>
+                            <p>15580266585</p>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"></div>
+                            <h4>GitHub</h4>
+                            <p><a href="https://github.com/username" target="_blank">github.com/username</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./index.js"></script>
+
+</html>
