@@ -17,18 +17,19 @@ setCanvasSize();
 
 // 弹幕类
 class Danmaku {
-    constructor(text) {
+    constructor(text, isUser = false) {
         this.text = text;
         this.x = Math.random() * canvas.width;
         this.y = canvas.height * Math.random();
         this.angle = (Math.random() * 240 - 30) * Math.PI / 180;
-        this.speed = 1 + Math.random() * 4;
+        this.speed = 1 + Math.random();
         this.fontSize = 12 + Math.floor(Math.random() * 7);
         this.maxFontSize = Math.min(36, this.fontSize * 2);
-        this.color = getRandomColor();
+        this.color = isUser ? '#FFD700' : getRandomColor(); // 用户弹幕使用金色
         this.alpha = 1;
         this.life = 0;
         this.maxLife = 200;
+        this.isUser = isUser; // 标记是否为用户发送的弹幕
     }
 
     // 更新位置
@@ -52,17 +53,33 @@ class Danmaku {
         ctx.font = `${Math.floor(this.fontSize)}px Arial`;
         ctx.fillStyle = this.color;
         ctx.globalAlpha = this.alpha;
-        ctx.fillText(this.text, this.x, this.y);
+
+        // 为用户弹幕添加特殊效果
+        if (this.isUser) {
+            // 计算文本宽度和高度
+            const textWidth = ctx.measureText(this.text).width;
+            const textHeight = this.fontSize;
+
+            // 绘制长方形边框
+            ctx.strokeStyle = 'red';
+            ctx.lineWidth = 2;
+            ctx.strokeRect(this.x - 5, this.y - textHeight + 5, textWidth + 10, textHeight + 5);
+            ctx.fillStyle = '#00f700';
+            // 绘制文本
+            ctx.fillText(this.text, this.x, this.y);
+        } else {
+            ctx.fillText(this.text, this.x, this.y);
+        }
         ctx.restore();
     }
 }
 
 // 生成随机颜色
 function getRandomColor() {
-    const r = Math.floor(Math.random() * 256);
-    const g = Math.floor(Math.random() * 256);
-    const b = Math.floor(Math.random() * 256);
-    return `rgb(${r}, ${g}, ${b})`;
+    let a = Math.floor(Math.random() * 256);
+    let b = Math.floor(Math.random() * 256);
+    let c = Math.floor(Math.random() * 256);
+    return `rgb(${a},${b},${c})`;
 }
 
 // 弹幕数组
@@ -83,9 +100,9 @@ function animate() {
 animate();
 
 // 增加弹幕
-function addDanmaku(text) {
+function addDanmaku(text, isUser = false) {
     if (text.trim() !== '') {
-        danmakus.push(new Danmaku(text));
+        danmakus.push(new Danmaku(text, isUser));
     }
 }
 
@@ -98,7 +115,7 @@ clearBtn.addEventListener('click', () => {
 sendBtn.addEventListener('click', () => {
     const text = msgInput.value.trim();
     if (text) {
-        addDanmaku(text);
+        addDanmaku(text, true); // 标记为用户弹幕
         msgInput.value = '';
     }
 });
@@ -108,17 +125,28 @@ msgInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
         const text = msgInput.value.trim();
         if (text) {
-            addDanmaku(text);
+            addDanmaku(text, true); // 标记为用户弹幕
             msgInput.value = '';
         }
     }
 });
 
-
-// 没0.2s向弹幕池中增加10条弹幕
 let intervalId = setInterval(() => {
     for (let i = 0; i < 10; i++) {
         addDanmaku(`机器弹幕${i}`);
     }
 }, 200);
 
+// 切换页面暂停
+document.addEventListener('visibilitychange', () => {
+    clearInterval(intervalId);
+    if (document.visibilityState === 'visible') {
+        intervalId = setInterval(() => {
+            for (let i = 0; i < 10; i++) {
+                addDanmaku(`机器弹幕${i}`);
+            }
+        }, 200);
+    } else {
+        clearInterval(intervalId);
+    }
+});
