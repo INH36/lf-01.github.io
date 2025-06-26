@@ -1,11 +1,20 @@
 /* 文本滑入动画 */
-.text-slide-in {
+.text-slide-in-right {
     opacity: 0;
     transform: translateX(-50px);
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
+.text-slide-in-left {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
 
-.text-slide-in.visible {
+.text-slide-in-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+.text-slide-in-left.visible {
     opacity: 1;
     transform: translateX(0);
 }

@@ -112,31 +112,45 @@
 
         </div>
 
+
         <!-- 企业文化 -->
-        <div class="w-full h-[520px] flex justify-center items-center bg-black flex-col gap-14">
-            <span
-                class="text-5xl text-white font-normal relative after:content-[''] after:absolute after:bottom-[-30px] after:left-0 after:w-full after:h-[4px] after:rounded-lg after:bg-active">企业文化</span>
-            <div class="w-[1520px] text-white font-normal text-2xl leading-[45px]">
-                <p class="indent-12">
-                    作为中国专业的企业文化咨询公司，我们在生存和发展的历程中，也形成了自己经营管理个性和文化，我们的运营和发展都基于对这些文化涵盖的信念、信条和原则持之以恒、不折不扣地执行，所有公司的成员的所有行为均需与这些标准和原则保持高度统一。
-                </p>
-                <p class="indent-12">
-                    我们相信，企业的战略可以改变，领导可以更换，甚至文化的表现也要与时俱进，总之一切都可以调整，唯一能保持并引领我们的，只有我们的文化核心。只有信念的坚持才能带来企业的持续增长，只有统一的意志才能锻炼出优秀的队伍，总之只有文化才能使我们长青。
-                </p>
+        <div class="bg-fixed bg-cover" style="background-image: url('./img/qy.jpg');">
+            <div
+                class="w-full h-[520px] bg-black/70 relative flex justify-center items-center flex-col parallax-container">
+                <div
+                    class="z-10 w-full h-full flex flex-col absolute justify-center items-center gap-14 parallax-content">
+                    <span class="text-5xl text-white font-normal relative 
+                after:content-[''] after:absolute after:bottom-[-30px] after:left-0 
+                after:w-full after:h-[4px] after:rounded-lg after:bg-active">
+                        企业文化</span>
+                    <div class="w-[1520px] text-white font-normal text-2xl leading-[45px]">
+                        <p class="indent-12">
+                            作为中国专业的企业文化咨询公司，我们在生存和发展的历程中，也形成了自己经营管理个性和文化，我们的运营和发展都基于对这些文化涵盖的信念、信条和原则持之以恒、不折不扣地执行，所有公司的成员的所有行为均需与这些标准和原则保持高度统一。
+                        </p>
+                        <p class="indent-12">
+                            我们相信，企业的战略可以改变，领导可以更换，甚至文化的表现也要与时俱进，总之一切都可以调整，唯一能保持并引领我们的，只有我们的文化核心。只有信念的坚持才能带来企业的持续增长，只有统一的意志才能锻炼出优秀的队伍，总之只有文化才能使我们长青。
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
 
+
+
         <!-- 团队介绍 -->
-        <div class="w-full flex flex-col">
+        <div id="team" class="w-full bg-white flex flex-col">
             <div class="flex h-[300px] justify-center items-center relative">
                 <span class="text-transparent text-9xl opacity-15" style="-webkit-text-stroke: 1px #000;">Team to
                     introduce</span>
-                <span
-                    class="text-5xl absolute bottom-24 text-black font-normal after:content-[''] after:absolute after:bottom-[-30px] after:left-0 after:w-full after:h-[4px] after:rounded-lg after:bg-active">团队介绍</span>
+                <span id="team_text_title" class="text-5xl absolute bottom-24 text-black 
+                    font-normal after:content-[''] after:absolute after:bottom-[-30px] 
+                    after:left-0 after:w-full after:h-[4px] after:rounded-lg after:bg-active">团队介绍</span>
             </div>
+
             <div class="h-[900px] bg-black grid grid-rows-1 grid-cols-3">
-                <div class="bg-orange-300 relative flex justify-center">
-                    <img class="w-full h-full bg-cover" src="./img/team/t_1.jpg" alt="">
+                <div id="team_img_1" class="relative overflow-hidden flex justify-center">
+                    <img class="w-full transition-all duration-500 hover:scale-[1.1] h-full bg-cover"
+                        src="./img/team/t_1.jpg" alt="">
                     <div class="absolute flex flex-col text-white bottom-[100px] justify-center items-center">
                         <span class="text-5xl">Jon Smith</span>
                         <span class="mt-7 text-xl">特级教师，从事教育工作10年</span>
@@ -148,8 +162,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="bg-red-200 relative flex justify-center">
-                    <img class="w-full h-full bg-cover" src="./img/team/t_2.jpg" alt="">
+                <div id="team_img_2" class="relative overflow-hidden flex justify-center">
+                    <img class="w-full  h-full bg-cover transition-all duration-500 hover:scale-[1.1]"
+                        src="./img/team/t_2.jpg" alt="">
                     <div class="absolute flex flex-col text-white bottom-[100px] justify-center items-center">
                         <span class="text-5xl">Merri Bond</span>
                         <span class="mt-7 text-xl">特级教师，从事教育工作10年</span>
@@ -161,8 +176,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="bg-green-300 relative flex justify-center">
-                    <img class="w-full h-full bg-cover" src="./img/team/t_3.jpg" alt="">
+                <div id="team_img_3" class=" relative overflow-hidden flex justify-center">
+                    <img class="w-full h-full bg-cover transition-all duration-500 hover:scale-[1.1]"
+                        src="./img/team/t_3.jpg" alt="">
                     <div class="absolute flex flex-col text-white bottom-[100px] justify-center items-center">
                         <span class="text-5xl">Samuel Fredman</span>
                         <span class="mt-7 text-xl">特级教师，从事教育工作10年</span>
@@ -178,28 +194,33 @@
         </div>
 
         <!-- 新闻动态 -->
-        <div class="w-full bg-[#252429]">
+        <div id="now" class="w-full bg-[#252429]">
             <div class="h-[310px] flex relative justify-center items-center">
                 <span class="flex opacity-15 text-9xl text-transparent ml-[54px] mt-[90px] font-normal tracking-normal"
                     style="-webkit-text-stroke: 1px #fff;">news and trends</span>
-                <span class="text-5xl absolute bottom-14 text-white font-normal 
+                <span id="now_title" class="text-5xl absolute bottom-14 text-white font-normal 
                         after:content-[''] after:absolute after:bottom-[-30px] after:left-0 
                         after:w-full after:h-[4px] after:rounded-lg after:bg-active">
-                    团队介绍
+                    新闻动态
                 </span>
             </div>
 
             <div class="h-[900px] flex gap-[66px] justify-center">
-                <div class="flex flex-col gap-9">
-                    <img class="w-[348px] h-[506px] bg-cover" src="./img/now/n_1.png" alt="">
+                <div id="now_img_1" class="flex flex-col gap-9">
+                    <div class="w-[348px] h-[506px] overflow-hidden transition-all duration-500 hover:scale-[1.1]">
+                        <img class="w-full h-full bg-cover" src="./img/now/n_1.png" alt="">
+                    </div>
+
                     <div class="w-[348px] text-white flex flex-col gap-7">
                         <span class="text-xl font-normal leading-[36px]">2022百度AI大会前夕，解读百度大脑的半年“豹变”</span>
                         <p class="text-sm font-light leading-7">
                             举办第六届中华印制大奖颁奖典礼、亚洲印刷展览联盟会议、国家主题日等多场专业、先进、丰富的同期活动，全面把握产业趋势与动态，共同探讨印刷业现状和未来。</p>
                     </div>
                 </div>
-                <div class="flex flex-col gap-9">
-                    <img class="w-[348px] h-[506px] bg-cover" src="./img/now/n_2.jpg" alt="">
+                <div id="now_img_2" class="flex flex-col gap-9">
+                    <div class="w-[348px] h-[506px] overflow-hidden transition-all duration-500 hover:scale-[1.1]">
+                        <img class="w-full h-full bg-cover" src="./img/now/n_2.jpg" alt="">
+                    </div>
                     <div class="w-[348px] text-white flex flex-col gap-7">
                         <span class="text-xl font-normal leading-[36px]">创投早报｜美国商业化核聚变创企获投；音乐版权公司完成融资</span>
                         <p class="text-sm font-light leading-7">
@@ -207,16 +228,20 @@
                         </p>
                     </div>
                 </div>
-                <div class="flex flex-col gap-9">
-                    <img class="w-[348px] h-[506px] bg-cover" src="./img/now/n_3.jpg" alt="">
+                <div id="now_img_3" class="flex flex-col gap-9">
+                    <div class="w-[348px] h-[506px] overflow-hidden transition-all duration-500 hover:scale-[1.1]">
+                        <img class="w-full h-full bg-cover" src="./img/now/n_3.jpg" alt="">
+                    </div>
                     <div class="w-[348px] text-white flex flex-col gap-7">
                         <span class="text-xl font-normal leading-[36px]">【千龙网】广告行业标准指导性意见将出台</span>
                         <p class="text-sm font-light leading-7">
                             国际印刷工业发展论坛由中国印刷及设备器材工业协会主办，始创于2005年，四年一届，已成功举办三届，每届论坛选择5-6个发达国家和5-6个发展中国家印刷协会的主席或总裁发表演讲</p>
                     </div>
                 </div>
-                <div class="flex flex-col gap-9">
-                    <img class="w-[348px] h-[506px] bg-cover" src="./img/now/n_4.jpg" alt="">
+                <div id="now_img_4" class="flex flex-col gap-9">
+                    <div class="w-[348px] h-[506px] overflow-hidden transition-all duration-500 hover:scale-[1.1]">
+                        <img class="w-full h-full bg-cover" src="./img/now/n_4.jpg" alt="">
+                    </div>
                     <div class="w-[348px] text-white flex flex-col gap-7">
                         <span class="text-xl font-normal leading-[36px]">支持触觉反馈，Manus VR推出全新Prime VR手套</span>
                         <p class="text-sm font-light leading-7">第三届国际印刷工业发展论坛（Forum-PI
@@ -225,7 +250,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 
     <!-- footer -->
