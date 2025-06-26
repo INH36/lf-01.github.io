@@ -2,7 +2,7 @@ export default class ViewportAnimation {
     constructor(options) {
         this.animationDuration = options.animationDuration || 500;
         this.staggerDelay = options.staggerDelay || 200;
-        this.threshold = 0.3;
+        this.threshold = 0.1;
         this.observer = null;
         
         // 处理多容器情况
