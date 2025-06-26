@@ -2,6 +2,9 @@
 
 tailwind.config = {
     theme: {
+        fontFamily: {
+            sans: ['Microsoft YaHei UI', 'sans-serif'],
+        },
         extend: {
             colors: {
                 tabbar: ''
@@ -12,11 +15,9 @@ tailwind.config = {
             backgroundColor: {
                 tabbar: '#252429',
                 active: '#FF350D',
-                home: '#f6f6f6'
+                home: '#f6f6f6',
+                footer: '#FF350D'
             },
-            fontFamily: {
-                'microsoft-yahei': ['Microsoft YaHei', 'sans-serif']
-            }
         }
     }
 }

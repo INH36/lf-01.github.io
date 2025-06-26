@@ -1,0 +1,27 @@
+
+.progress-ring {
+  transform: rotate(-90deg);
+  transform-origin: center;
+}
+
+
+#bannerChange {
+  z-index: 10;
+}
+
+#bannerChange div[data-index].active {
+  background-color: white;
+}
+
+#bannerChange div[data-index] .progress-ring circle {
+  transition: stroke-dashoffset linear;
+}
+
+#bannerChange {
+  z-index: 20;
+}
+
+#banner div[data-index] {
+  transition-property: opacity;
+  transition-timing-function: ease;
+}
