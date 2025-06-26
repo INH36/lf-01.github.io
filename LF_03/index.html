@@ -22,7 +22,8 @@
 <body class="font-microsoft-yahei">
 
     <!-- tabbar -->
-    <header class="flex justify-between items-center text-white h-tabbar bg-tabbar px-12 py-8">
+    <header
+        class="flex absolute z-30 w-full justify-between items-center text-white h-tabbar bg-transparent  px-12 py-8">
         <div class="flex gap-4 items-center">
             <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -46,7 +47,7 @@
             </svg>
             <span class="font-semibold text-xl">企业站</span>
         </div>
-        <div class="flex items-center gap-[88px] mr-[280px]">
+        <div class="xl:flex hidden items-center gap-[88px] mr-[280px]">
             <span class="text-sm relative after:content-['']  hover:after:w-full after:transition-all
                 after:absolute after:bottom-[-10px] after:left-0 after:w-full
                 after:h-[2px] after:bg-active cursor-pointer">
@@ -66,21 +67,25 @@
     <!-- 首页 -->
     <div class="w-full bg-home">
         <!-- 轮播图区域 -->
-        <div class="h-[700px] w-full relative">
-            <ul id="bannerChange" class="absolute left-12 top-1/2 -translate-y-1/2 flex flex-col gap-4"></ul>
+        <div class="w-full aspect-[12/5] relative">
+            <ul id="bannerChange" class="absolute left-12 top-1/2 -translate-y-1/2 flex flex-col"></ul>
             <div id="banner" class="w-full h-full bg-black"></div>
         </div>
 
         <!-- 服务范围 -->
-        <div id="serveRange" class="w-full relative bg-[#f6f6f6] pb-12">
+        <div id="serveRange" class="w-full relative bg-[#f6f6f6] xl:pb-12 pb-24">
             <!-- 背景 -->
-            <div class="w-full opacity-15 ">
-                <span class="flex text-9xl text-transparent ml-[54px] mt-[90px] font-normal tracking-normal"
+            <div class="w-full opacity-15 xl:relative absolute top-0 left-0">
+                <span
+                    class="flex xl:text-9xl text-5xl text-transparent ml-[54px] xl:mt-[90px] mt-16 font-normal tracking-normal"
                     style="-webkit-text-stroke: 1px #000000;">Service scope</span>
-                <img class="w-[912px] h-[1116px] ml-12 mt-2" src="./img/fw.png" alt="">
+                <img loading="lazy" class="w-full xl:w-[912px] xl:h-[1116px] ml-0 xl:ml-12 xl:mt-2 mt-10"
+                    src="./img/fw.png" alt="">
             </div>
-            <div class="absolute top-[105px] left-[172px] flex flex-col w-[710px]">
-                <span id="text_1" class="relative transition-all text-5xl font-normal text-black">服务范围</span>
+            <div
+                class="xl:absolute relative xl:top-[105px] top-24 xl:left-[172px] left-0 xl:px-0 px-8 flex flex-col xl:w-[710px]">
+                <span id="text_1"
+                    class="relative transition-all xl:ml-0 ml-4 xl:text-5xl text-4xl font-normal text-black">服务范围</span>
                 <div class="mt-[42px] text-[#888] font-normal text-2xl leading-[45px] flex flex-col gap-9">
                     <p id="text_2">
                         依托百度政务混合云，汇聚城市管理及公安等政务领域的自有数据及互联网公开数据，基于百度大数据多年积累的行业模型及实战经验，提供从数据整合治理到分析挖掘的一站式大数据解决方案，助力智慧政务新时代。
@@ -91,21 +96,22 @@
                 </div>
 
             </div>
-            <div id="serveRangeImg" class="absolute right-0 top-[72px] flex flex-col gap-8">
+            <div id="serveRangeImg"
+                class="xl:absolute relative xl:w-auto w-full right-0 xl:top-[72px] top-24 flex flex-col gap-8">
                 <div class="flex gap-8 items-end justify-end">
-                    <div id="img_1" class="w-64 h-64 opacity-0">
-                        <img class="w-full h-full bg-cover" src="./img/serve/s_1.jpg" alt="">
+                    <div id="img_1" class="xl:w-64 xL:h-64 h-[160px] w-[164px] opacity-0">
+                        <img loading="lazy" class="w-full h-full bg-cover" src="./img/serve/s_1.jpg" alt="">
                     </div>
-                    <div id="img_2" class="w-[700px] h-[600px] opacity-0">
-                        <img class="w-full h-full bg-cover" src="./img/serve/s_2.jpg" alt="">
+                    <div id="img_2" class="xl:w-[700px] xl:h-[600px] w-[466px] h-[386px] opacity-0">
+                        <img loading="lazy" class="w-full h-full bg-cover" src="./img/serve/s_2.jpg" alt="">
                     </div>
                 </div>
-                <div class="flex gap-8">
-                    <div id="img_3" class="w-[658px] h-[484px] opacity-0">
-                        <img class="w-full h-full bg-cover" src="./img/serve/s_3.jpg" alt="">
+                <div class="flex gap-8 xl:w-auto w-full">
+                    <div id="img_3" class="xl:w-[658px] w-[346px] opacity-0">
+                        <img loading="lazy" class="w-full bg-cover" src="./img/serve/s_3.jpg" alt="">
                     </div>
-                    <div id="img_4" class="w-[460px] h-[300px] opacity-0">
-                        <img class="w-full h-full bg-cover" src="./img/serve/s_3.jpg" alt="">
+                    <div id="img_4" class="xl:w-[460px] w-[308px] opacity-0">
+                        <img loading="lazy" class="w-full bg-cover" src="./img/serve/s_4.jpg" alt="">
                     </div>
                 </div>
             </div>
@@ -114,7 +120,7 @@
 
 
         <!-- 企业文化 -->
-        <div class="bg-fixed bg-cover" style="background-image: url('./img/qy.jpg');">
+        <div class="bg-fixed xl:block hidden bg-cover" style="background-image: url('./img/qy.jpg');">
             <div
                 class="w-full h-[520px] bg-black/70 relative flex justify-center items-center flex-col parallax-container">
                 <div
@@ -140,51 +146,55 @@
         <!-- 团队介绍 -->
         <div id="team" class="w-full bg-white flex flex-col">
             <div class="flex h-[300px] justify-center items-center relative">
-                <span class="text-transparent text-9xl opacity-15" style="-webkit-text-stroke: 1px #000;">Team to
+                <span class="text-transparent xl:text-9xl text-5xl opacity-15"
+                    style="-webkit-text-stroke: 1px #000;">Team to
                     introduce</span>
-                <span id="team_text_title" class="text-5xl absolute bottom-24 text-black 
+                <span id="team_text_title" class="xl:text-5xl text-3xl absolute bottom-24 text-black 
                     font-normal after:content-[''] after:absolute after:bottom-[-30px] 
                     after:left-0 after:w-full after:h-[4px] after:rounded-lg after:bg-active">团队介绍</span>
             </div>
 
-            <div id="team_img" class="h-[900px] bg-black grid grid-rows-1 grid-cols-3">
+            <div id="team_img" class="bg-black grid grid-rows-1 xl:grid-cols-3 grid-cols-1">
                 <div id="team_img_1" class="relative overflow-hidden flex justify-center">
-                    <img class="w-full transition-all duration-500 hover:scale-[1.1] h-full bg-cover"
+                    <img loading="lazy" class="w-full transition-all duration-500 hover:scale-[1.1] h-full bg-cover"
                         src="./img/team/t_1.jpg" alt="">
                     <div class="absolute flex flex-col text-white bottom-[100px] justify-center items-center">
                         <span class="text-5xl">Jon Smith</span>
                         <span class="mt-7 text-xl">特级教师，从事教育工作10年</span>
                         <div class="mt-[54px] flex gap-4">
                             <i class="w-6 h-6">
-                                <img class="w-full h-full bg-cover" src="./img/common/r_arrow.png" alt="">
+                                <img loading="lazy" class="w-full h-full bg-cover" src="./img/common/r_arrow.png"
+                                    alt="">
                             </i>
                             <span class="text-xl">More information</span>
                         </div>
                     </div>
                 </div>
                 <div id="team_img_2" class="relative overflow-hidden flex justify-center">
-                    <img class="w-full  h-full bg-cover transition-all duration-500 hover:scale-[1.1]"
+                    <img loading="lazy" class="w-full  h-full bg-cover transition-all duration-500 hover:scale-[1.1]"
                         src="./img/team/t_2.jpg" alt="">
                     <div class="absolute flex flex-col text-white bottom-[100px] justify-center items-center">
                         <span class="text-5xl">Merri Bond</span>
                         <span class="mt-7 text-xl">特级教师，从事教育工作10年</span>
                         <div class="mt-[54px] flex gap-4">
                             <i class="w-6 h-6">
-                                <img class="w-full h-full bg-cover" src="./img/common/r_arrow.png" alt="">
+                                <img loading="lazy" class="w-full h-full bg-cover" src="./img/common/r_arrow.png"
+                                    alt="">
                             </i>
                             <span class="text-xl">More information</span>
                         </div>
                     </div>
                 </div>
                 <div id="team_img_3" class=" relative overflow-hidden flex justify-center">
-                    <img class="w-full h-full bg-cover transition-all duration-500 hover:scale-[1.1]"
+                    <img loading="lazy" class="w-full h-full bg-cover transition-all duration-500 hover:scale-[1.1]"
                         src="./img/team/t_3.jpg" alt="">
                     <div class="absolute flex flex-col text-white bottom-[100px] justify-center items-center">
                         <span class="text-5xl">Samuel Fredman</span>
                         <span class="mt-7 text-xl">特级教师，从事教育工作10年</span>
                         <div class="mt-[54px] flex gap-4">
                             <i class="w-6 h-6">
-                                <img class="w-full h-full bg-cover" src="./img/common/r_arrow.png" alt="">
+                                <img loading="lazy" class="w-full h-full bg-cover" src="./img/common/r_arrow.png"
+                                    alt="">
                             </i>
                             <span class="text-xl">More information</span>
                         </div>
@@ -194,21 +204,21 @@
         </div>
 
         <!-- 新闻动态 -->
-        <div id="now" class="w-full bg-[#252429]">
-            <div class="h-[310px] flex relative justify-center items-center">
-                <span class="flex opacity-15 text-9xl text-transparent ml-[54px] mt-[90px] font-normal tracking-normal"
+        <div id="now" class="w-full bg-[#252429] pb-6">
+            <div class="flex relative justify-center items-center py-24">
+                <span class="flex opacity-15 xl:text-9xl text-4xl text-transparent font-normal tracking-normal"
                     style="-webkit-text-stroke: 1px #fff;">news and trends</span>
-                <span id="now_title" class="text-5xl absolute bottom-14 text-white font-normal 
+                <span id="now_title" class="xl:text-5xl text-3xl absolute top-1/2 text-white font-normal 
                         after:content-[''] after:absolute after:bottom-[-30px] after:left-0 
                         after:w-full after:h-[4px] after:rounded-lg after:bg-active">
                     新闻动态
                 </span>
             </div>
 
-            <div id="now_img" class="h-[900px] flex gap-[66px] justify-center">
+            <div id="now_img" class=" mt-4 flex gap-[66px] justify-center flex-wrap">
                 <div id="now_img_1" class="flex flex-col gap-9">
                     <div class="w-[348px] h-[506px] overflow-hidden transition-all duration-500 hover:scale-[1.1]">
-                        <img class="w-full h-full bg-cover" src="./img/now/n_1.png" alt="">
+                        <img loading="lazy" class="w-full h-full bg-cover" src="./img/now/n_1.png" alt="">
                     </div>
 
                     <div class="w-[348px] text-white flex flex-col gap-7">
@@ -219,7 +229,7 @@
                 </div>
                 <div id="now_img_2" class="flex flex-col gap-9">
                     <div class="w-[348px] h-[506px] overflow-hidden transition-all duration-500 hover:scale-[1.1]">
-                        <img class="w-full h-full bg-cover" src="./img/now/n_2.jpg" alt="">
+                        <img loading="lazy" class="w-full h-full bg-cover" src="./img/now/n_2.jpg" alt="">
                     </div>
                     <div class="w-[348px] text-white flex flex-col gap-7">
                         <span class="text-xl font-normal leading-[36px]">创投早报｜美国商业化核聚变创企获投；音乐版权公司完成融资</span>
@@ -230,7 +240,7 @@
                 </div>
                 <div id="now_img_3" class="flex flex-col gap-9">
                     <div class="w-[348px] h-[506px] overflow-hidden transition-all duration-500 hover:scale-[1.1]">
-                        <img class="w-full h-full bg-cover" src="./img/now/n_3.jpg" alt="">
+                        <img loading="lazy" class="w-full h-full bg-cover" src="./img/now/n_3.jpg" alt="">
                     </div>
                     <div class="w-[348px] text-white flex flex-col gap-7">
                         <span class="text-xl font-normal leading-[36px]">【千龙网】广告行业标准指导性意见将出台</span>
@@ -240,12 +250,13 @@
                 </div>
                 <div id="now_img_4" class="flex flex-col gap-9">
                     <div class="w-[348px] h-[506px] overflow-hidden transition-all duration-500 hover:scale-[1.1]">
-                        <img class="w-full h-full bg-cover" src="./img/now/n_4.jpg" alt="">
+                        <img loading="lazy" class="w-full h-full bg-cover" src="./img/now/n_4.jpg" alt="">
                     </div>
                     <div class="w-[348px] text-white flex flex-col gap-7">
                         <span class="text-xl font-normal leading-[36px]">支持触觉反馈，Manus VR推出全新Prime VR手套</span>
-                        <p class="text-sm font-light leading-7">第三届国际印刷工业发展论坛（Forum-PI
-                            2013）于2013年5月13日在北京举行，主办方邀请了来自中国、美国、德国、英国、意大利、日本、澳大利亚、俄罗斯、印度、印尼、南非、巴西、</p>
+                        <p class="text-sm font-light leading-7">
+                            第三届国际印刷工业发展论坛（Forum-PI2013）于2013年5月13日在北京举行，主办方邀请了来自中国、美国、德国、英国、意大利、日本、澳大利亚、俄罗斯、印度、印尼、南非、巴西、
+                        </p>
                     </div>
                 </div>
             </div>
@@ -253,15 +264,15 @@
     </div>
 
     <!-- footer -->
-    <footer class="w-full h-[210px] bg-footer flex flex-col justify-center items-center">
-        <div class="flex gap-32 text-base text-white">
+    <footer class="w-full pt-8 pb-14 px-8 bg-footer flex flex-col justify-center items-center">
+        <div class="flex xl:gap-32 text-base text-white flex-wrap gap-4">
             <span>地址：中国山东省青岛市市南区某某中路20号</span>
             <span>邮箱：1370XXX171@qq.com</span>
             <span>电话：0591-88888888</span>
         </div>
-        <div class="flex mt-12 gap-3 justify-center text-white items-center">
+        <div class="flex gap-3 mt-6 justify-center text-white items-center flex-wrap">
             <img class="w-[50px] h-[50px]" src="./img/common/QR.png" alt="">
-            <p>Copyright © 2009 - 2022 Cld , All Rights Reserved 某某网络科技有限公司 版权所有 陕ICP备xxxxxxx号</p>
+            <p class="flex-1">Copyright © 2009 - 2022 Cld , All Rights Reserved 某某网络科技有限公司 版权所有 陕ICP备xxxxxxx号</p>
         </div>
     </footer>
 

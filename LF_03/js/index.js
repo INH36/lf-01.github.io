@@ -1,6 +1,6 @@
+import { getHotNows } from '../api/index.js';
 import Banner from './mod/banner.js';
 import ViewportAnimation from './mod/viewport-animation.js';
-import http from '../api/http.js'
 
 // 等待DOM加载完成
 document.addEventListener('DOMContentLoaded', () => {
@@ -41,6 +41,4 @@ document.addEventListener('DOMContentLoaded', () => {
   viewportAnimation.init();
 });
 
-http.get('/api/hot_nows').then(res => {
-  console.log(res);
-})
+await getHotNows()
