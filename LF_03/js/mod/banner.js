@@ -42,8 +42,6 @@ export default class Banner {
 
   // 创建指示器
   createIndicators() {
-    this.indicatorContainer.innerHTML = '';
-    
     this.images.forEach((_, index) => {
       const indicator = document.createElement('div');
       indicator.className = 'w-3 h-3 rounded-full border border-white cursor-pointer relative';
@@ -165,7 +163,6 @@ export default class Banner {
   // 继续自动播放
   resumeAutoPlay() {
     this.isPaused = false;
-    
     const activeIndicator = this.indicatorContainer.querySelector(`div[data-index="${this.currentIndex}"]`);
     if (activeIndicator) {
       const progressRing = activeIndicator.querySelector('.progress-ring circle');
@@ -197,17 +194,5 @@ export default class Banner {
     this.container.addEventListener('mouseleave', () => {
       this.resumeAutoPlay();
     });
-  }
-
-  // 销毁
-  destroy() {
-    if (this.timer) {
-      clearInterval(this.timer);
-      this.timer = null;
-    }
-    
-    this.indicatorContainer.removeEventListener('click', this.handleIndicatorClick);
-    this.container.removeEventListener('mouseenter', this.handleMouseEnter);
-    this.container.removeEventListener('mouseleave', this.handleMouseLeave);
   }
 }

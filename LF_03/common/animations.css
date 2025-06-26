@@ -1,0 +1,21 @@
+/* 文本滑入动画 */
+.text-slide-in {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.text-slide-in.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* 图片渐显动画 */
+.img-fade-in {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.img-fade-in.visible {
+    opacity: 1;
+}

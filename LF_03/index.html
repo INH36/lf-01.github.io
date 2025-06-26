@@ -13,6 +13,7 @@
         }
     </style>
     <link rel="stylesheet" href="./common/banner.css">
+    <link rel="stylesheet" href="./common/animations.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="./tailwind.config.js"></script>
     <script src="./js/index.js" type="module"></script>
@@ -71,7 +72,7 @@
         </div>
 
         <!-- 服务范围 -->
-        <div class="w-full relative bg-[#f6f6f6] pb-12">
+        <div id="serveRange" class="w-full relative bg-[#f6f6f6] pb-12">
             <!-- 背景 -->
             <div class="w-full opacity-15 ">
                 <span class="flex text-9xl text-transparent ml-[54px] mt-[90px] font-normal tracking-normal"
@@ -79,31 +80,31 @@
                 <img class="w-[912px] h-[1116px] ml-12 mt-2" src="./img/fw.png" alt="">
             </div>
             <div class="absolute top-[105px] left-[172px] flex flex-col w-[710px]">
-                <span class="text-5xl font-normal text-black">服务范围</span>
+                <span id="text_1" class="relative transition-all text-5xl font-normal text-black">服务范围</span>
                 <div class="mt-[42px] text-[#888] font-normal text-2xl leading-[45px] flex flex-col gap-9">
-                    <p>
+                    <p id="text_2">
                         依托百度政务混合云，汇聚城市管理及公安等政务领域的自有数据及互联网公开数据，基于百度大数据多年积累的行业模型及实战经验，提供从数据整合治理到分析挖掘的一站式大数据解决方案，助力智慧政务新时代。
                     </p>
-                    <p>
+                    <p id="text_3">
                         全渠道零售方案包括B2C、O2O、B2B的场景，提供APP/小程序，支持对接饿了么、美团等第三方外卖平台，基于阿里巴巴多年沉淀的业务中台技术，建立商品、会员、交易、营销等共享服务中心，实现全渠道数据的共享和一致，帮助零售商打造线上、线下无差别的全渠道销售能力。
                     </p>
                 </div>
 
             </div>
-            <div class="absolute right-0 top-[72px] flex flex-col gap-8">
+            <div id="serveRangeImg" class="absolute right-0 top-[72px] flex flex-col gap-8">
                 <div class="flex gap-8 items-end justify-end">
-                    <div class="w-64 h-64">
+                    <div id="img_1" class="w-64 h-64 opacity-0">
                         <img class="w-full h-full bg-cover" src="./img/serve/s_1.jpg" alt="">
                     </div>
-                    <div class="w-[700px] h-[600px]">
+                    <div id="img_2" class="w-[700px] h-[600px] opacity-0">
                         <img class="w-full h-full bg-cover" src="./img/serve/s_2.jpg" alt="">
                     </div>
                 </div>
                 <div class="flex gap-8">
-                    <div class="w-[658px] h-[484px] ">
+                    <div id="img_3" class="w-[658px] h-[484px] opacity-0">
                         <img class="w-full h-full bg-cover" src="./img/serve/s_3.jpg" alt="">
                     </div>
-                    <div class="w-[460px] h-[300px] ">
+                    <div id="img_4" class="w-[460px] h-[300px] opacity-0">
                         <img class="w-full h-full bg-cover" src="./img/serve/s_3.jpg" alt="">
                     </div>
                 </div>
