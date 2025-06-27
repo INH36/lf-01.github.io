@@ -4,19 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>企业站</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-    </style>
+    <title>企业站 - 首页</title>
     <link rel="stylesheet" href="./common/banner.css">
     <link rel="stylesheet" href="./common/animations.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="./tailwind.config.js"></script>
     <script src="./js/index.js" type="module"></script>
+    <script src="./js/home.js" type="module"></script>
 </head>
 
 <body class="font-microsoft-yahei">
@@ -48,15 +42,15 @@
             <span class="font-semibold text-xl">企业站</span>
         </div>
         <div class="xl:flex hidden items-center gap-[88px] mr-[280px]">
-            <span class="text-sm relative after:content-['']  hover:after:w-full after:transition-all
+            <a href="./index.html" class="text-sm relative after:content-['']  hover:after:w-full after:transition-all
                 after:absolute after:bottom-[-10px] after:left-0 after:w-full
                 after:h-[2px] after:bg-active cursor-pointer">
                 首页
-            </span>
-            <span class="text-sm relative cursor-pointer hover:after:w-full 
+            </a>
+            <a href="./now.html" class="text-sm relative cursor-pointer hover:after:w-full 
                 after:content-[''] after:absolute after:bottom-[-10px] after:transition-all
                 after:left-0 after:w-0 after:h-[2px] after:bg-active">
-                新闻列表页</span>
+                新闻列表页</a>
             <span class="text-sm relative cursor-pointer hover:after:w-full 
                 after:content-[''] after:absolute after:bottom-[-10px] after:transition-all
                 after:left-0 after:w-0 after:h-[2px] after:bg-active">
@@ -73,9 +67,9 @@
             <img class="w-6 h-6 bg-cover" src="./img/x.png" alt="">
         </span>
         <div class="flex flex-col gap-10 mt-5">
-            <span class="hover:text-[#ffc8a8] transition-colors duration-200">首页</span>
+            <a href="./index.html" class="hover:text-[#ffc8a8] transition-colors duration-200">首页</a>
             <i class="w-full border border-[#333]"></i>
-            <span class="hover:text-[#ffc8a8] transition-colors duration-200">新闻列表页</span>
+            <a href="./now.html" class="hover:text-[#ffc8a8] transition-colors duration-200">新闻列表页</a>
             <i class="w-full border border-[#333]"></i>
             <span class="hover:text-[#ffc8a8] transition-colors duration-200">关于我们</span>
         </div>

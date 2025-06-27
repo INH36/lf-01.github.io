@@ -1,0 +1,1 @@
+const now_info = document.querySelector('#now_info')

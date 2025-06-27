@@ -1,11 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>新闻列表</title>
+    <title>企业站 - 新闻列表</title>
+    <link rel="stylesheet" href="./common/animations.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./tailwind.config.js"></script>
+    <script src="./js/index.js" type="module"></script>
 </head>
+
 <body>
-    
+    <!-- tabbar -->
+    <header class="flex relative z-30 w-full justify-between items-center text-white h-tabbar bg-[#252429] px-12 py-8">
+        <div class="flex gap-4 items-center">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M19.178 4.34467C19.178 3.67707 18.6924 3.13086 18.0248 3.13086C17.3572 3.13086 16.811 3.67707 16.811 4.34467C16.811 4.40536 16.811 4.46605 16.811 4.52674C16.811 8.47162 16.811 10.8385 16.811 14.0551C16.811 15.0262 17.1145 15.8152 17.7821 16.4221C18.3283 16.9076 18.9352 17.3931 19.5421 17.818C20.4525 18.4249 21.4235 18.9104 22.3946 19.4566C23.1835 19.8814 23.6084 20.549 23.6691 21.4594C23.6691 22.0056 23.7297 22.5518 23.7297 23.1587C23.7297 25.1008 23.7297 26.5574 23.7297 28.3174C23.7297 28.3781 23.7297 28.4388 23.7297 28.4995C23.7297 29.1671 24.276 29.6526 24.9436 29.6526C25.5505 29.6526 26.0967 29.1671 26.0967 28.5602C26.0967 28.5602 26.0967 28.5602 26.0967 28.4995V28.4388C26.0967 26.3146 26.0967 24.1905 26.0967 22.0056C26.0967 20.549 25.3684 19.4566 23.9725 18.9711C23.4263 18.789 22.8801 18.6069 22.3946 18.4249C20.3311 17.6966 19.2993 16.4221 19.178 14.1765C19.178 12.5986 19.178 6.22607 19.178 4.58743"
+                    fill="white" />
+                <path
+                    d="M12.2596 7.13652C12.2596 7.07583 12.2596 7.01514 12.2596 6.95445C12.1383 6.40823 11.6527 5.9834 11.0458 5.9834C10.4389 5.9834 9.95341 6.40823 9.83203 7.01514C9.83203 7.01514 9.83203 7.01514 9.83203 7.07583C9.83203 7.13652 9.83203 7.19721 9.83203 7.2579C9.83203 7.31859 9.83203 7.31859 9.83203 7.37928C9.83203 9.68552 9.83203 12.0524 9.83203 14.4194C9.83203 15.1477 10.0748 15.8153 10.5603 16.3008C11.1065 16.847 11.7134 17.3932 12.381 17.818C13.4128 18.4856 14.4445 19.0925 15.4762 19.6388C16.2652 20.0636 16.6294 20.7312 16.6294 21.5809C16.6294 22.1271 16.6901 22.6733 16.6901 23.2195C16.6901 25.8292 16.6901 28.4389 16.6901 31.0486C16.6901 31.1093 16.6901 31.1093 16.6901 31.1699C16.6901 31.1699 16.6901 31.1699 16.6901 31.2306C16.6901 31.8982 17.2363 32.4444 17.9039 32.4444C18.5715 32.4444 19.1177 31.8982 19.1177 31.2306C19.1177 31.2306 19.1177 31.2306 19.1177 31.1699C19.1177 28.1354 19.1177 25.2223 19.1177 22.1878C19.1177 20.6705 18.3894 19.5174 16.8721 19.0319C16.3866 18.8498 15.9011 18.6677 15.4156 18.5463C13.3521 17.8787 12.3203 16.4222 12.199 14.3587"
+                    fill="white" />
+                <path
+                    d="M23.6694 9.1391C23.6694 11.7488 23.6694 14.3585 23.6694 17.0289C23.6694 17.2109 23.7908 17.4537 23.9122 17.5144C24.6405 17.8785 25.3688 18.2427 26.0971 18.6068C26.0971 18.6068 26.0971 10.8991 26.0971 7.07563C26.0971 6.40803 25.5508 5.86182 24.8832 5.86182C24.2156 5.86182 23.6694 6.40803 23.6694 7.01494"
+                    fill="white" />
+                <path
+                    d="M5.76574 21.4592V10.4136C4.1271 11.3239 2.60983 12.2343 0.971191 13.2053C2.54914 15.9364 4.1271 18.6675 5.76574 21.4592Z"
+                    fill="white" />
+                <path
+                    d="M30.2843 14.1157C30.2843 14.1157 30.2236 14.1157 30.2236 14.1764V25.1007C31.8623 24.1903 33.4402 23.28 35.0182 22.3089C33.4402 19.5172 31.8623 16.7861 30.2843 14.1157Z"
+                    fill="white" />
+                <path
+                    d="M12.3202 19.5779C12.3202 19.4566 12.1988 19.2745 12.1381 19.2138C11.4098 18.6676 10.6209 18.1821 9.89258 17.6965C9.89258 17.6965 9.89258 24.9794 9.89258 28.5601C9.89258 29.2277 10.4388 29.7739 11.1064 29.7739C11.774 29.7739 12.3202 29.2277 12.3202 28.6208"
+                    fill="white" />
+            </svg>
+            <span class="font-semibold text-xl">企业站</span>
+        </div>
+        <div class="xl:flex hidden items-center gap-[88px] mr-[280px]">
+            <span class="text-sm relative after:content-[''] hover:after:w-full after:transition-all
+                after:absolute after:bottom-[-10px] after:left-0 after:w-0
+                after:h-[2px] after:bg-active cursor-pointer">
+                首页
+            </span>
+            <span class="text-sm relative cursor-pointer hover:after:w-full 
+                after:content-[''] after:absolute after:bottom-[-10px] after:transition-all
+                after:left-0 after:h-[2px] after:bg-active after:w-full">
+                新闻列表页</span>
+            <span class="text-sm relative cursor-pointer hover:after:w-full 
+                after:content-[''] after:absolute after:bottom-[-10px] after:transition-all
+                after:left-0 after:w-0 after:h-[2px] after:bg-active">
+                关于我们</span>
+        </div>
+        <div class="xl:hidden block w-9 h-9">
+            <img class="bg-cover cursor-pointer" src="./img/move.png" alt="">
+        </div>
+    </header>
+
+    <!-- 抽屉 -->
+    <div class="fixed top-0 w-2/3 right-0 h-full translate-x-[100%] bg-[#252429] text-white z-50 p-8 flex flex-col">
+        <span class="flex justify-end">
+            <img class="w-6 h-6 bg-cover" src="./img/x.png" alt="">
+        </span>
+        <div class="flex flex-col gap-10 mt-5">
+            <span class="hover:text-[#ffc8a8] transition-colors duration-200">首页</span>
+            <i class="w-full border border-[#333]"></i>
+            <span class="hover:text-[#ffc8a8] transition-colors duration-200">新闻列表页</span>
+            <i class="w-full border border-[#333]"></i>
+            <span class="hover:text-[#ffc8a8] transition-colors duration-200">关于我们</span>
+        </div>
+    </div>
+
+    <!-- 新闻列表页 -->
+    <div id="now_page" class="w-full bg-white pb-6 flex flex-col items-center justify-center">
+        <div class="flex relative justify-center items-center py-24">
+            <span class="flex opacity-15 xl:text-9xl text-4xl text-transparent font-normal tracking-normal"
+                style="-webkit-text-stroke: 1px #000;">News list page</span>
+            <span id="now_title" class="xl:text-5xl text-3xl absolute top-1/2 text-black font-normal 
+                        after:content-[''] after:absolute after:bottom-[-30px] after:left-0 
+                        after:w-full after:h-[4px] after:rounded-lg after:bg-active">
+                新闻动态
+            </span>
+        </div>
+        <div id="now_info" class="w-4/5 flex flex-wrap justify-center items-center gap-16">
+            <div class="w-80 flex flex-col gap-8">
+                <div class="w-full">
+                    <img class="bg-cover" src="./img/dc/thumbnail/n1.jpg" alt="">
+                </div>
+                <p class="text-xl font-normal">2022百度AI大会前夕，解读百度大脑的半年“豹变”</p>
+                <p class="text-sm">
+                    Facebook为未来的VR社交打造了一款逼真的虚拟头像系统，该系统的特点是，利用数百颗摄像头对人脸进行动作捕捉，并能生成与人脸相似度很高的虚拟头像，这些头像还能模仿人脸的大量表情。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <footer class="w-full pt-8 pb-14 px-8 bg-footer flex flex-col justify-center items-center">
+        <div class="flex xl:gap-32 text-base text-white flex-wrap gap-4">
+            <span>地址：中国山东省青岛市市南区某某中路20号</span>
+            <span>邮箱：1370XXX171@qq.com</span>
+            <span>电话：0591-88888888</span>
+        </div>
+        <div class="flex gap-3 mt-6 justify-center text-white items-center flex-wrap">
+            <img class="w-[50px] h-[50px]" src="./img/common/QR.png" alt="">
+            <p class="flex-1">Copyright © 2009 - 2022 Cld , All Rights Reserved 某某网络科技有限公司 版权所有 陕ICP备xxxxxxx号</p>
+        </div>
+    </footer>
 </body>
+
 </html>
