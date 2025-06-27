@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>企业站 - 新闻列表</title>
     <link rel="stylesheet" href="./common/animations.css">
+    <link rel="stylesheet" href="./common/image-loading.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="./tailwind.config.js"></script>
     <script src="./js/index.js" type="module"></script>
+    <script src="./js/now.js" type="module"></script>
 </head>
 
 <body>
@@ -79,17 +81,40 @@
             <span id="now_title" class="xl:text-5xl text-3xl absolute top-1/2 text-black font-normal 
                         after:content-[''] after:absolute after:bottom-[-30px] after:left-0 
                         after:w-full after:h-[4px] after:rounded-lg after:bg-active">
-                新闻动态
+                新闻列表页
             </span>
         </div>
-        <div id="now_info" class="w-4/5 flex flex-wrap justify-center items-center gap-16">
-            <div class="w-80 flex flex-col gap-8">
-                <div class="w-full h-[500px]">
-                    <img class="w-full h-full bg-cover" src="./img/now/n_1.png" alt="">
-                </div>
-                <p class="text-xl font-normal">2022百度AI大会前夕，解读百度大脑的半年“豹变”</p>
-                <p class="text-sm">
-                    Facebook为未来的VR社交打造了一款逼真的虚拟头像系统，该系统的特点是，利用数百颗摄像头对人脸进行动作捕捉，并能生成与人脸相似度很高的虚拟头像，这些头像还能模仿人脸的大量表情。</p>
+        <div id="now_info" class="w-4/5 flex flex-wrap items-center justify-center gap-16">
+
+        </div>
+
+        <!-- 分页器 -->
+        <div class="flex justify-center items-center mt-10">
+            <div class="flex items-center gap-2">
+                <!-- 每页显示数量选择 -->
+                <select class="px-3 py-1 border border-gray-300 rounded text-sm">
+                    <option value="8">8条/页</option>
+                    <option value="16">16条/页</option>
+                    <option value="32">32条/页</option>
+                </select>
+
+                <!-- 上一页按钮 -->
+                <button
+                    class="px-3 py-1 border border-gray-300 rounded text-sm hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed">
+                    &lt;
+                </button>
+
+                <!-- 下一页按钮 -->
+                <button class="px-3 py-1 border border-gray-300 rounded text-sm hover:bg-gray-50">
+                    &gt;
+                </button>
+
+                <!-- 前往页面 -->
+                <span class="text-sm text-gray-600 ml-4">前往</span>
+                <input type="number" class="w-12 px-2 py-1 border border-gray-300 rounded text-sm text-center"
+                    style="-webkit-appearance: none;" value="4" min="1" max="100">
+
+                <span class="text-sm text-gray-600">页</span>
             </div>
         </div>
     </div>

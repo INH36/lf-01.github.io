@@ -1,0 +1,70 @@
+/* 图片懒加载样式 */
+.image-container {
+    position: relative;
+    overflow: hidden;
+}
+
+/* 占位符样式 - 显示缩略图并添加毛玻璃效果 */
+.lazy-load-placeholder {
+    position: relative;
+}
+
+.lazy-load-placeholder::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 2;
+    transition: opacity 0.3s ease;
+}
+
+/* 加载完成后移除毛玻璃效果 */
+.lazy-load-placeholder.loaded::before {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* 原图样式 */
+.main-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* 原图加载完成后显示 */
+.main-img.loaded {
+    opacity: 1;
+}
+
+/* 加载指示器 */
+.loading-indicator {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    transition: opacity 0.3s ease;
+}
+
+.loading-indicator.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* 加载动画 */
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}

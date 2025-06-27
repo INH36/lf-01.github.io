@@ -7,7 +7,6 @@
   z-index: 20;
 }
 
-/* 移动端适配 */
 @media (max-width: 768px) {
   #bannerChange {
     bottom: 20px;
