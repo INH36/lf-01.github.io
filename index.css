@@ -30,6 +30,74 @@ body {
     overflow: hidden;
 }
 
+@media screen and (max-width: 850px) {
+    .root {
+        width: 95%;
+        height: auto;
+        min-height: 90vh;
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .title {
+        font-size: 28px;
+        margin-bottom: 10px;
+    }
+
+    .description {
+        font-size: 14px;
+        margin-bottom: 20px;
+        padding: 0 10px;
+    }
+
+    .nav-container {
+        gap: 20px;
+    }
+
+    .nav-item {
+        width: 150px;
+        height: 150px;
+    }
+
+    .nav-icon {
+        font-size: 32px;
+        margin-bottom: 10px;
+    }
+
+    .nav-title {
+        font-size: 16px;
+    }
+
+    .nav-desc {
+        font-size: 12px;
+        padding: 0 10px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .root {
+        padding: 15px;
+    }
+
+    .nav-item {
+        width: 130px;
+        height: 130px;
+    }
+
+    .nav-icon {
+        font-size: 28px;
+    }
+
+    .nav-title {
+        font-size: 14px;
+    }
+
+    .nav-desc {
+        font-size: 11px;
+        padding: 0 5px;
+    }
+}
+
 .root::before {
     content: '';
     position: absolute;

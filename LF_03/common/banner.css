@@ -94,7 +94,6 @@
   stroke: white;
   stroke-width: 2;
   fill: transparent;
-  /* 不在CSS中设置固定的transition时间，而是在JS中动态设置 */
   transition: stroke-dashoffset 0s linear;
   filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.8));
 }

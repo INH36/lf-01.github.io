@@ -9,19 +9,22 @@ document.addEventListener('DOMContentLoaded', async() => {
   await initNow()
   initTeam()
 
-  // 初始化轮播图
+  // 初始化轮播图 - 优化懒加载版本
   const banner = new Banner({
     containerId: 'banner',
     indicatorId: 'bannerChange',
     images: [
       './img/banner/b_1.jpg',
       './img/banner/b_2.jpg',
-      './img/banner/b_3.jpg'
+      './img/banner/b_3.jpg',
+      './img/banner/b_4.jpg',
+      './img/banner/b_5.jpg'
     ],
     interval: 5000,               // 自动播放间隔时间（毫秒）
     fadeTime: 500                 // 动画过渡时间（毫秒）
   });
   banner.init();
+
 
   const viewportAnimation = new ViewportAnimation({
     text_dom_list_id: [

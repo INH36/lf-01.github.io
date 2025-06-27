@@ -20,8 +20,8 @@ const info = [
 const setHtml = () => {
     const tem = info.map((item,index)=>{
         return `
-            <div id="team_img_${index+1}" class="relative overflow-hidden flex justify-center">
-                <img loading="lazy" class="w-full h-full bg-cover transition-all duration-500 hover:scale-[1.1]"
+            <div id="team_img_${index+1}" class="relative overflow-hidden flex justify-center transition-all duration-500 hover:scale-[1.1]">
+                <img loading="lazy" class="w-full h-full bg-cover "
                     src="./${item.image}" alt="">
                 <div class="absolute flex flex-col text-white bottom-[100px] justify-center items-center">
                     <span class="text-5xl">${item.name}</span>

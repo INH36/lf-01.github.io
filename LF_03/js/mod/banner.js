@@ -7,38 +7,47 @@ export default class Banner {
     this.images = options.images     // 轮播图片列表
     this.interval = options.interval || 5000;  // 播放时长
     this.fadeTime = options.fadeTime || 500;  // 动画时长
-    this.currentIndex = 0; // 当前图片ID
+    this.currentIndex = 1; // 当前图片ID
     this.timer = null;  // 定时器
     this.isPaused = false; // 是否暂停
+    
+    // 优化：添加图片加载状态管理
+    this.loadedImages = new Set(); // 已加载的图片索引
+    this.loadingImages = new Set(); // 正在加载的图片索引
+    this.maxPreloadDistance = 1; // 最大预加载距离（当前图片前后各1张）
   }
 
   init() {
-    this.createBannerStructure();
-    this.createIndicators();
-    this.preloadAndShowFirstImage();
-    this.bindEvents();
-    this.startAutoPlay();
+    this.createBannerStructure(); // 创建轮播图结构
+    this.createIndicators(); // 创建指示器结构
+    this.preloadAndShowFirstImage(); // 预加载并显示第一张图片
+    this.bindEvents();  // 绑定事件
+    this.startAutoPlay();  // 开启自动轮播
   }
 
   // 预加载并显示第一张图片
   preloadAndShowFirstImage() {
     const firstImage = this.imageContainer.querySelector('div[data-index="0"]');
     if (firstImage) {
-      firstImage.classList.remove('opacity-0');
-      firstImage.classList.add('opacity-100');
+      this.loadImage(firstImage).then(() => {
+        firstImage.classList.remove('opacity-0');
+        firstImage.classList.add('opacity-100');
+        
+        // 预加载相邻图片
+        this.preloadAdjacentImages(0);
+      }).catch((error) => {
+        console.error('第一张图片加载失败:', error);
+        // 即使加载失败也要显示，避免界面空白
+        firstImage.classList.remove('opacity-0');
+        firstImage.classList.add('opacity-100');
+      });
     } else {
       console.error('未找到第一张图片元素');
     }
-    // 设置当前索引为0
-    this.currentIndex = 0;
     
-    // 初始化指示器，但不立即启动动画
+    this.currentIndex = 0;
     this.updateIndicators(0, false);
     
-    // 预加载第二张图片
-    this.preloadNextImage(0);
-    
-    // 短暂延迟后启动指示器动画，确保DOM已完全渲染
     setTimeout(() => {
       this.updateIndicators(0, true);
     }, 100);
@@ -70,62 +79,7 @@ export default class Banner {
       loader.innerHTML = '<div class="w-8 h-8 border-4 border-white border-t-transparent rounded-full animate-spin"></div>';
       loader.style.display = 'none';
       imgDiv.appendChild(loader);
-
       this.imageContainer.appendChild(imgDiv);
-    });
-    // 初始化懒加载
-    this.initLazyLoading();
-  }
-
-  // 初始化懒加载
-  initLazyLoading() {
-    // 创建IntersectionObserver实例
-    const options = {
-      root: null, // 使用视口作为观察区域
-      rootMargin: '0px', // 视口边距
-      threshold: 0.1 // 当目标元素10%进入视口时触发回调
-    };
-
-    const observer = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const imgDiv = entry.target;
-          const src = imgDiv.dataset.src;
-
-          if (src) {
-            // 显示加载指示器
-            const loader = imgDiv.querySelector('div');
-            if (loader) {
-              loader.style.display = 'block';
-            }
-
-            // 创建一个新的Image对象来预加载图片
-            const img = new Image();
-            img.onload = () => {
-              // 图片加载完成后设置背景
-              imgDiv.style.backgroundImage = `url(${src})`;
-              // 移除data-src属性表示已加载
-              delete imgDiv.dataset.src;
-
-              // 隐藏加载指示器
-              if (loader) {
-                loader.style.display = 'none';
-              }
-            };
-            // 移除懒加载属性，确保图片能够立即加载
-            img.src = src;
-
-            // 图片开始加载后停止观察该元素
-            observer.unobserve(imgDiv);
-          }
-        }
-      });
-    }, options);
-
-    // 观察所有图片元素
-    const imgDivs = this.imageContainer.querySelectorAll('div[data-index]');
-    imgDivs.forEach(imgDiv => {
-      observer.observe(imgDiv);
     });
   }
 
@@ -137,7 +91,6 @@ export default class Banner {
       indicator.className = 'indicator-container relative';
       indicator.dataset.index = index;
 
-      // 创建SVG指示器
       const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
       svg.setAttribute('width', '24');
       svg.setAttribute('height', '24');
@@ -174,7 +127,7 @@ export default class Banner {
   }
 
 
-  // 显示图片
+  // 显示图片 - 优化懒加载版本
   showImage(index) {
     // 先隐藏所有图片
     const allImages = this.imageContainer.querySelectorAll('div[data-index]');
@@ -186,81 +139,152 @@ export default class Banner {
     // 获取当前需要显示的图片
     const currentImage = this.imageContainer.querySelector(`div[data-index="${index}"]`);
     if (currentImage) {
-      // 检查图片是否已加载，如果未加载则立即加载
-      if (currentImage.dataset.src && !currentImage.style.backgroundImage) {
-        // 显示加载指示器
-        const loader = currentImage.querySelector('div');
-        if (loader) {
-          loader.style.display = 'block';
-        }
-
-        const src = currentImage.dataset.src;
-        const img = new Image();
-        img.onload = () => {
-          // 图片加载完成后设置背景
-          currentImage.style.backgroundImage = `url(${src})`;
-          delete currentImage.dataset.src;
-
-          // 隐藏加载指示器
-          if (loader) {
-            loader.style.display = 'none';
-          }
-
-          // 确保图片加载后显示
-          setTimeout(() => {
-            currentImage.classList.remove('opacity-0');
-            currentImage.classList.add('opacity-100');
-          }, 10); // 添加小延迟确保DOM更新
-        };
-
-        // 立即加载图片
-        img.src = src;
-      } else {
-        // 图片已加载，直接显示
+      // 优化：使用Promise处理图片加载，提供更好的错误处理
+      this.loadImage(currentImage).then(() => {
+        // 图片加载完成后显示
         setTimeout(() => {
           currentImage.classList.remove('opacity-0');
           currentImage.classList.add('opacity-100');
-        }, 10); // 添加小延迟确保DOM更新
-      }
+        }, 10);
+      }).catch((error) => {
+        console.error(`图片加载失败 (索引: ${index}):`, error);
+        // 即使加载失败也要显示元素，避免界面卡住
+        currentImage.classList.remove('opacity-0');
+        currentImage.classList.add('opacity-100');
+      });
     }
 
-    // 预加载下一张图片
-    this.preloadNextImage(index);
+    // 预加载相邻图片
+    this.preloadAdjacentImages(index);
 
     // 统一更新指示器和当前索引
     this.updateIndicators(index, !this.isPaused);
     this.currentIndex = index;
   }
 
-  // 预加载下一张图片
-  preloadNextImage(currentIndex) {
-    // 计算下一张图片的索引
-    const nextIndex = (currentIndex + 1) % this.images.length;
-    const nextImage = this.imageContainer.querySelector(`div[data-index="${nextIndex}"]`);
+  // 加载单张图片的通用方法
+  loadImage(imageElement, showLoader = true) {
+    return new Promise((resolve, reject) => {
+      const index = parseInt(imageElement.dataset.index);
+      
+      // 如果图片已经加载，直接返回
+      if (!imageElement.dataset.src || imageElement.style.backgroundImage || this.loadedImages.has(index)) {
+        resolve();
+        return;
+      }
 
-    // 如果下一张图片存在且尚未加载，则预加载
-    if (nextImage && nextImage.dataset.src && !nextImage.style.backgroundImage) {
+      // 如果图片正在加载，等待加载完成
+      if (this.loadingImages.has(index)) {
+        const checkLoaded = () => {
+          if (this.loadedImages.has(index)) {
+            resolve();
+          } else if (!this.loadingImages.has(index)) {
+            reject(new Error('Loading was cancelled'));
+          } else {
+            setTimeout(checkLoaded, 100);
+          }
+        };
+        checkLoaded();
+        return;
+      }
+
+      // 标记为正在加载
+      this.loadingImages.add(index);
+      
+      const loader = imageElement.querySelector('div');
+      const src = imageElement.dataset.src;
+
       // 显示加载指示器
-      const loader = nextImage.querySelector('div');
-      if (loader) {
+      if (showLoader && loader) {
         loader.style.display = 'block';
       }
 
-      const src = nextImage.dataset.src;
       const img = new Image();
-
+      
       img.onload = () => {
-        nextImage.style.backgroundImage = `url(${src})`;
-        delete nextImage.dataset.src;
-
+        imageElement.style.backgroundImage = `url(${src})`;
+        delete imageElement.dataset.src;
+        
+        // 更新加载状态
+        this.loadingImages.delete(index);
+        this.loadedImages.add(index);
+        
         // 隐藏加载指示器
         if (loader) {
           loader.style.display = 'none';
         }
+        
+        resolve();
       };
 
-      // 开始加载图片，移除懒加载属性
+      img.onerror = () => {
+        console.error(`图片加载失败: ${src}`);
+        
+        // 更新加载状态
+        this.loadingImages.delete(index);
+        
+        // 隐藏加载指示器
+        if (loader) {
+          loader.style.display = 'none';
+        }
+        reject(new Error(`Failed to load image: ${src}`));
+      };
+
+      // 设置超时处理
+      const timeoutId = setTimeout(() => {
+        if (this.loadingImages.has(index)) {
+          img.onload = null;
+          img.onerror = null;
+          this.loadingImages.delete(index);
+          
+          if (loader) {
+            loader.style.display = 'none';
+          }
+          reject(new Error(`Image load timeout: ${src}`));
+        }
+      }, 10000); // 10秒超时
+
+      // 清理超时定时器
+      img.onload = ((originalOnload) => {
+        return function() {
+          clearTimeout(timeoutId);
+          originalOnload.call(this);
+        };
+      })(img.onload);
+      
+      img.onerror = ((originalOnerror) => {
+        return function() {
+          clearTimeout(timeoutId);
+          originalOnerror.call(this);
+        };
+      })(img.onerror);
+
       img.src = src;
+    });
+  }
+
+  // 预加载相邻图片
+  preloadAdjacentImages(currentIndex) {
+    const totalImages = this.images.length;
+    
+    // 只预加载指定距离内的图片
+    for (let i = 1; i <= this.maxPreloadDistance; i++) {
+      // 预加载下一张图片
+      const nextIndex = (currentIndex + i) % totalImages;
+      const nextImage = this.imageContainer.querySelector(`div[data-index="${nextIndex}"]`);
+      
+      // 预加载上一张图片
+      const prevIndex = (currentIndex - i + totalImages) % totalImages;
+      const prevImage = this.imageContainer.querySelector(`div[data-index="${prevIndex}"]`);
+
+      // 异步预加载，不显示加载指示器
+      if (nextImage && !this.loadedImages.has(nextIndex)) {
+        this.loadImage(nextImage, false)
+      }
+      
+      if (prevImage && !this.loadedImages.has(prevIndex)) {
+        this.loadImage(prevImage, false)
+      }
     }
   }
 
@@ -325,12 +349,9 @@ export default class Banner {
 
   // 自动播放
   startAutoPlay() {
-    // 清除现有定时器
     if (this.timer) {
       clearTimeout(this.timer);
     }
-
-    // 使用setTimeout进行精确控制
     this.timer = setTimeout(() => {
       if (!this.isPaused) {
         this.nextImage();
@@ -342,8 +363,6 @@ export default class Banner {
   // 暂停自动播放
   pauseAutoPlay() {
     this.isPaused = true;
-    
-    // 清除定时器
     if (this.timer) {
       clearTimeout(this.timer);
     }
@@ -360,7 +379,7 @@ export default class Banner {
         // 停止过渡动画
         progressCircle.style.transition = 'none';
         
-        // 确保偏移量在合理范围内（0到37.7之间）
+        // 确保偏移量在合理范围内
         const clampedOffset = Math.max(0, Math.min(37.7, currentOffset));
         progressCircle.setAttribute('stroke-dashoffset', clampedOffset.toString());
       }
@@ -369,9 +388,7 @@ export default class Banner {
 
   // 继续自动播放
   resumeAutoPlay() {
-    // 如果已经不是暂停状态，不执行任何操作
     if (!this.isPaused) return;
-    
     this.isPaused = false;
     
     // 获取当前指示器的进度
@@ -417,40 +434,59 @@ export default class Banner {
 
   // 绑定事件
   bindEvents() {
-    // 点击指示器切换图片
-    this.indicatorContainer.addEventListener('click', (e) => {
+    // 使用箭头函数确保this绑定正确，便于后续移除事件监听器
+    this.handleIndicatorClick = (e) => {
       const indicator = e.target.closest('div[data-index]');
       if (indicator) {
         const index = parseInt(indicator.dataset.index, 10);
         this.showImage(index);
       }
-    });
+    };
 
-    // 鼠标进入轮播图区域，暂停自动播放
-    this.container.addEventListener('mouseenter', () => {
+    this.handleMouseEnter = () => {
       this.pauseAutoPlay();
-    });
+    };
 
-    // 鼠标离开轮播图区域，恢复自动播放
-    this.container.addEventListener('mouseleave', () => {
+    this.handleMouseLeave = () => {
       this.resumeAutoPlay();
-    });
+    };
+
+    this.handlePrevClick = () => {
+      this.prevImage();
+    };
+
+    this.handleNextClick = () => {
+      this.nextImage();
+    };
+
+    // 绑定事件监听器
+    this.indicatorContainer.addEventListener('click', this.handleIndicatorClick);
+    this.container.addEventListener('mouseenter', this.handleMouseEnter);
+    this.container.addEventListener('mouseleave', this.handleMouseLeave);
 
     // 添加左右箭头点击事件（如果存在）
     const prevButton = document.querySelector('.banner-prev');
     const nextButton = document.querySelector('.banner-next');
 
     if (prevButton) {
-      prevButton.addEventListener('click', () => {
-        this.prevImage();
-      });
+      prevButton.addEventListener('click', this.handlePrevClick);
+      this.prevButton = prevButton; // 保存引用以便清理
     }
 
     if (nextButton) {
-      nextButton.addEventListener('click', () => {
-        this.nextImage();
-      });
+      nextButton.addEventListener('click', this.handleNextClick);
+      this.nextButton = nextButton; // 保存引用以便清理
     }
 
+    // 添加页面可见性变化监听（性能优化）
+    this.handleVisibilityChange = () => {
+      if (document.hidden) {
+        this.pauseAutoPlay();
+      } else if (!this.isPaused) {
+        this.resumeAutoPlay();
+      }
+    };
+    
+    document.addEventListener('visibilitychange', this.handleVisibilityChange);
   }
 }
