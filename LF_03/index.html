@@ -62,13 +62,32 @@
                 after:left-0 after:w-0 after:h-[2px] after:bg-active">
                 关于我们</span>
         </div>
+        <div class="xl:hidden block w-9 h-9">
+            <img class="bg-cover cursor-pointer" src="./img/move.png" alt="">
+        </div>
     </header>
+
+    <!-- 抽屉 -->
+    <div class="fixed w-2/3 right-0 h-full translate-x-[100%] bg-[#252429] text-white z-50 p-8 flex flex-col">
+        <span class="flex justify-end">
+            <img class="w-6 h-6 bg-cover" src="./img/x.png" alt="">
+        </span>
+        <div class="flex flex-col gap-10 mt-5">
+            <span class="hover:text-[#ffc8a8] transition-colors duration-200">首页</span>
+            <i class="w-full border border-[#333]"></i>
+            <span class="hover:text-[#ffc8a8] transition-colors duration-200">新闻列表页</span>
+            <i class="w-full border border-[#333]"></i>
+            <span class="hover:text-[#ffc8a8] transition-colors duration-200">关于我们</span>
+        </div>
+    </div>
 
     <!-- 首页 -->
     <div class="w-full bg-home">
         <!-- 轮播图区域 -->
-        <div class="w-full aspect-[12/5] relative">
-            <ul id="bannerChange" class="absolute left-12 top-1/2 -translate-y-1/2 flex flex-col"></ul>
+        <div class="w-full xl:aspect-[12/5] md:aspect-[12/5] aspect-[5/3] relative">
+            <ul id="bannerChange"
+                class="absolute md:left-12 left-1/2 md:-translate-x-0 -translate-x-1/2 top-1/2 -translate-y-1/2 flex flex-col">
+            </ul>
             <div id="banner" class="w-full h-full bg-black"></div>
         </div>
 
@@ -100,18 +119,22 @@
                 class="xl:absolute relative xl:w-auto w-full right-0 xl:top-60 top-28 flex flex-col xl:gap-8 gap-4 px-4 xl:px-0">
                 <div class="flex xl:gap-8 gap-3 items-end justify-end">
                     <div id="img_1" class="xl:w-64 flex-1 opacity-0">
-                        <img loading="lazy" class="bg-cover object-cover rounded-lg shadow-md" src="./img/serve/s_1.jpg" alt="">
+                        <img loading="lazy" class="bg-cover object-cover rounded-lg shadow-md" src="./img/serve/s_1.jpg"
+                            alt="">
                     </div>
                     <div id="img_2" class="xl:w-[700px] flex-[3] sm:w-[80%] opacity-0">
-                        <img loading="lazy" class="bg-cover object-cover rounded-lg shadow-md" src="./img/serve/s_2.jpg" alt="">
+                        <img loading="lazy" class="bg-cover object-cover rounded-lg shadow-md" src="./img/serve/s_2.jpg"
+                            alt="">
                     </div>
                 </div>
                 <div class="flex xl:gap-8 gap-3 xl:w-auto w-full justify-start">
                     <div id="img_3" class="xl:w-[658px] flex-[4] xl:h-auto opacity-0">
-                        <img loading="lazy" class="bg-cover object-cover rounded-lg shadow-md" src="./img/serve/s_3.jpg" alt="">
+                        <img loading="lazy" class="bg-cover object-cover rounded-lg shadow-md" src="./img/serve/s_3.jpg"
+                            alt="">
                     </div>
                     <div id="img_4" class="xl:w-[460px] flex-[3] xl:h-auto opacity-0">
-                        <img loading="lazy" class="bg-cover object-cover rounded-lg shadow-md" src="./img/serve/s_4.jpg" alt="">
+                        <img loading="lazy" class="bg-cover object-cover rounded-lg shadow-md" src="./img/serve/s_4.jpg"
+                            alt="">
                     </div>
                 </div>
             </div>
@@ -166,7 +189,8 @@
                                 <img loading="lazy" class="w-full h-full bg-cover" src="./img/common/r_arrow.png"
                                     alt="">
                             </i>
-                            <span class="text-xl hover:text-[#ff350d] transition-colors duration-300">More information</span>
+                            <span class="text-xl hover:text-[#ff350d] transition-colors duration-300">More
+                                information</span>
                         </div>
                     </div>
                 </div>

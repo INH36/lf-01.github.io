@@ -2,12 +2,15 @@ import Banner from './mod/banner.js';
 import ViewportAnimation from './mod/viewport-animation.js';
 import {initNow} from './mod/now.js'
 import { initTeam } from './mod/team.js';
+import baseStyle from './mod/base.js';
 
 // 等待DOM加载完成
 document.addEventListener('DOMContentLoaded', async() => {
   
   await initNow()
   initTeam()
+
+  baseStyle.drawer()
 
   // 初始化轮播图
   const banner = new Banner({
@@ -44,4 +47,5 @@ document.addEventListener('DOMContentLoaded', async() => {
     staggerDelay: 200       // 元素间错开0.2秒，单位毫秒
   });
   viewportAnimation.init();
+
 });

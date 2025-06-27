@@ -7,6 +7,32 @@
   z-index: 20;
 }
 
+/* 移动端适配 */
+@media (max-width: 768px) {
+  #bannerChange {
+    bottom: 20px;
+    top: auto;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    flex-direction: row;
+    gap: 8px;
+  }
+  
+  #bannerChange div[data-index] {
+    margin: 3px;
+  }
+  
+  .indicator-container {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .indicator-svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
 #bannerChange div[data-index] {
   cursor: pointer;
   transition: all 0.3s ease;
