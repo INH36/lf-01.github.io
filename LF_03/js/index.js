@@ -1,10 +1,14 @@
 import Banner from './mod/banner.js';
 import ViewportAnimation from './mod/viewport-animation.js';
 import {initNow} from './mod/now.js'
+import { initTeam } from './mod/team.js';
 
 // 等待DOM加载完成
 document.addEventListener('DOMContentLoaded', async() => {
+  
   await initNow()
+  initTeam()
+
   // 初始化轮播图
   const banner = new Banner({
     containerId: 'banner',

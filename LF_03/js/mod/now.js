@@ -7,7 +7,7 @@ const nowContainer = document.getElementById('now_img');
 const setHtml = (data) => {
     const tem = data.map((item,index)=>{
         return `
-            <div id="now_img_${index}" class="flex flex-col gap-9">
+            <div id="now_img_${index+1}" class="flex flex-col gap-9">
                     <div class="w-[348px] h-[506px] overflow-hidden transition-all duration-500 hover:scale-[1.1]">
                         <img loading="lazy" class="w-full h-full bg-cover" src="./${item.image}" alt="">
                     </div>
