@@ -1,9 +1,10 @@
-import { getHotNows } from '../api/index.js';
 import Banner from './mod/banner.js';
 import ViewportAnimation from './mod/viewport-animation.js';
+import {initNow} from './mod/now.js'
 
 // 等待DOM加载完成
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async() => {
+  await initNow()
   // 初始化轮播图
   const banner = new Banner({
     containerId: 'banner',
@@ -40,5 +41,3 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   viewportAnimation.init();
 });
-
-await getHotNows()
