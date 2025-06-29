@@ -111,3 +111,50 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     border: 1px solid #ddd;
 }
+
+/* 弹幕限制控件样式 */
+.danmaku-limit-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #fff;
+    padding: 8px 12px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    font-size: 12px;
+    color: #333;
+}
+
+.danmaku-limit-container:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transform: scale(1.02);
+}
+
+.danmaku-limit-container label {
+    font-weight: 500;
+    color: #555;
+    white-space: nowrap;
+}
+
+.danmaku-limit-container input[type="number"] {
+    width: 60px;
+    padding: 4px 6px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 12px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.danmaku-limit-container input[type="number"]:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.danmaku-limit-container span {
+    color: #666;
+    font-size: 11px;
+    white-space: nowrap;
+}
