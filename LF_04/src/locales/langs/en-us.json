@@ -1,0 +1,21 @@
+{
+  "welcome": "Welcome to my website",
+  "author": "Author is：<1>YCL</1>",
+  "common": {
+    "username": "Username",
+    "settings": "Settings",
+    "logout": "Logout"
+  },
+  "tooltip": {
+    "fullScreen": "Full Screen",
+    "exitFullScreen": "Exit Full Screen",
+    "language": "Switch Language",
+    "theme": "Switch Theme",
+    "lightMode": "Light Mode",
+    "darkMode": "Dark Mode"
+  },
+  "language": {
+    "zh": "Chinese",
+    "en": "English"
+  }
+}
