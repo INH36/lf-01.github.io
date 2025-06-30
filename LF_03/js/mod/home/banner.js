@@ -1,3 +1,10 @@
+
+function getHighResImage(path) {
+  // 将路径中的文件名替换为2x版本
+  return path.replace(/(\w+)\.jpg$/, '$1-2x.jpg');
+}
+
+
 export default class Banner {
 
   constructor(options) {
@@ -66,15 +73,13 @@ export default class Banner {
       imgDiv.style.transitionDuration = `${this.fadeTime / 1000}s`;
       imgDiv.style.objectFit = 'cover';
       imgDiv.style.backgroundPosition = 'center';
-      imgDiv.dataset.index = index;
+      imgDiv.dataset.index = index;    
       if (index === 0) {
-        // imgDiv.style.backgroundImage = `url(${src})`;
         imgDiv.src = src;
-        imgDiv.srcset = src + ' 2x';
+        imgDiv.srcset = getHighResImage(src) + ' 1.5x';
       } else {
-        // imgDiv.dataset.src = src;
         imgDiv.src = src;
-        imgDiv.srcset = src + ' 2x';
+        imgDiv.srcset = getHighResImage(src) + ' 1.5x';
       }
 
       // 添加加载指示器
@@ -143,7 +148,6 @@ export default class Banner {
     // 获取当前需要显示的图片
     const currentImage = this.imageContainer.querySelector(`img[data-index="${index}"]`);
     if (currentImage) {
-      // 优化：使用Promise处理图片加载，提供更好的错误处理
       this.loadImage(currentImage).then(() => {
         // 图片加载完成后显示
         setTimeout(() => {
@@ -152,7 +156,6 @@ export default class Banner {
         }, 10);
       }).catch((error) => {
         console.error(`图片加载失败 (索引: ${index}):`, error);
-        // 即使加载失败也要显示元素，避免界面卡住
         currentImage.classList.remove('opacity-0');
         currentImage.classList.add('opacity-100');
       });
