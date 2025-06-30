@@ -25,6 +25,6 @@ const setHtml = (data) => {
 // 渲染
 export const initNew = async () => {
     const res = await getHotNews()
-    const newHtml = setHtml(res.data)
+    const newHtml = setHtml(res)
     newContainer.innerHTML = newHtml
 }

@@ -55,7 +55,7 @@ const lazyLoadImages = () => {
 }
 
 const init = async() => {
-    const {data} = await getHotPageList()
+    const data = await getHotPageList()
     const imgCom = document.getElementById('new_info')
     imgCom.innerHTML = getNewPageItemTem(data)
     lazyLoadImages()
