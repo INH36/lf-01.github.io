@@ -1,7 +1,7 @@
-import Banner from './mod/banner.js';
+import Banner from './mod/home/banner.js';
 import ViewportAnimation from './mod/viewport-animation.js';
-import {initNew} from './mod/new.js'
-import { initTeam } from './mod/team.js';
+import {initNew} from './mod/home/new.js'
+import { initTeam } from './mod//home/team.js';
 
 // 等待DOM加载完成
 document.addEventListener('DOMContentLoaded', async() => {

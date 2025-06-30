@@ -93,28 +93,40 @@
         <div class="flex justify-center items-center mt-10">
             <div class="flex items-center gap-2">
                 <!-- 每页显示数量选择 -->
-                <select class="px-3 py-1 border border-gray-300 rounded text-sm">
-                    <option value="8">8条/页</option>
-                    <option value="16">16条/页</option>
-                    <option value="32">32条/页</option>
-                </select>
+                <div class="flex items-center space-x-4">
+                    <select class="px-3 py-1 border border-gray-300 rounded text-sm">
+                        <option value="8">8条/页</option>
+                        <option value="16">16条/页</option>
+                        <option value="32">32条/页</option>
+                    </select>
+                </div>
 
-                <!-- 上一页按钮 -->
-                <button
-                    class="px-3 py-1 border border-gray-300 rounded text-sm hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed">
-                    &lt;
-                </button>
+                <div id="pager" class="flex-1 flex justify-center"></div>
 
-                <!-- 下一页按钮 -->
-                <button class="px-3 py-1 border border-gray-300 rounded text-sm hover:bg-gray-50">
-                    &gt;
-                </button>
+                <div class="flex items-center space-x-2">
+                    <!-- 上一页按钮 -->
+                    <div id="prev-btn"
+                        class="px-3 py-1  text-sm hover:bg-active/60 transition-all cursor-pointer duration-200 rounded-md disabled:opacity-50 disabled:cursor-not-allowed">
+                        &lt;
+                    </div>
 
-                <!-- 前往页面 -->
-                <span class="text-sm text-gray-600 ml-4">前往</span>
-                <input id="" type="number" class="w-12 px-2 py-1 border border-gray-300 rounded text-sm text-center"
-                    style="-webkit-appearance: none;" value="1" min="1" max="1">
-                <span class="text-sm text-gray-600">页</span>
+                    <div id="total-info-container" class="flex items-center">
+                        
+                    </div>
+
+                    <!-- 下一页按钮 -->
+                    <div id="next-btn"
+                        class="px-3 py-1  text-sm hover:bg-active/60 transition-all cursor-pointer duration-200 rounded-md disabled:opacity-50 disabled:cursor-not-allowed">
+                        &gt;
+                    </div>
+
+                    <!-- 前往页面 -->
+                    <span class="text-sm text-gray-600 ml-4">前往</span>
+                    <input id="page_num" type="number"
+                        class="w-12 px-2 py-1 border border-gray-300 rounded text-sm text-center" value="1" min="1"
+                        max="1">
+                    <span class="text-sm text-gray-600">页</span>
+                </div>
             </div>
         </div>
     </div>

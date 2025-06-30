@@ -1,4 +1,4 @@
-import { getHotNews } from '../../api/index.js';
+import { getHotNews } from '../../../api/index.js';
 
 // 获取容器
 const newContainer = document.getElementById('new_img');

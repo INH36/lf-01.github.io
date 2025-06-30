@@ -7,7 +7,8 @@ tailwind.config = {
         },
         extend: {
             colors: {
-                tabbar: ''
+                tabbar: '',
+                active: '#FF350D'
             },
             height: {
                 tabbar: '100px'
