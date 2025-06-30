@@ -148,6 +148,11 @@ export default class Banner {
     // 获取当前需要显示的图片
     const currentImage = this.imageContainer.querySelector(`img[data-index="${index}"]`);
     if (currentImage) {
+      // 先将display改为block，触发img的lazy loading
+      if (currentImage.style.display === 'none') {
+        currentImage.style.display = 'block';
+      }
+      
       this.loadImage(currentImage).then(() => {
         // 图片加载完成后显示
         setTimeout(() => {
