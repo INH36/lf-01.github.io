@@ -15,3 +15,12 @@ export const getHotPageList = async (page = 1, pagesize = 8) => {
     const res = await http.get('/now/nowlist', params)
     return res
 }
+
+// 获取新闻详情
+export const getNewDetails = async (id = 1) => {
+    const params = {
+        id
+    }
+    const res = await http.get('/now/details', params)
+    return res
+}

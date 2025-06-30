@@ -1,6 +1,3 @@
-import { getHotPageList } from "../../../api/index.js"
-
-
 // 获取模板
 const getNewPageItemTem = (data) => {
     const tem = data.map((item, index)=>{
@@ -22,7 +19,6 @@ const getNewPageItemTem = (data) => {
 // 图片加载函数
 const lazyLoadImages = () => {
     const imageContainers = document.querySelectorAll('.lazy-load-placeholder');
-    
     imageContainers.forEach(container => {
         const imagePath = container.dataset.image;
         // 创建原图元素
@@ -54,11 +50,20 @@ const lazyLoadImages = () => {
     });
 }
 
+const addClickEvent = (data) => {
+    const newsItems = document.querySelectorAll('.cursor-pointer[data-index]');
+    newsItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const index = item.dataset.index;
+            const id = data[index].id || index;
+            window.location.href = `./details.html?id=${id}`;
+        });
+    });
+}
+
 export const init = async(data = []) => {
     const imgCom = document.getElementById('new_info')
     imgCom.innerHTML = getNewPageItemTem(data)
     lazyLoadImages()
+    addClickEvent(data) 
 }
-
-
-// document.addEventListener('DOMContentLoaded', init)
