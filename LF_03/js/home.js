@@ -1,12 +1,12 @@
 import Banner from './mod/banner.js';
 import ViewportAnimation from './mod/viewport-animation.js';
-import {initNow} from './mod/now.js'
+import {initNew} from './mod/new.js'
 import { initTeam } from './mod/team.js';
 
 // 等待DOM加载完成
 document.addEventListener('DOMContentLoaded', async() => {
   
-  await initNow()
+  await initNew()
   initTeam()
 
   // 初始化轮播图 - 优化懒加载版本
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', async() => {
       ["text_1", "text_2", "text_3"],
       ["team_text_title"],
       [],
-      ["now_title"],
+      ["new_title"],
       []
     ],
     text_to_direction: ['right', 'left', 'left', 'right', 'left'],
@@ -40,9 +40,9 @@ document.addEventListener('DOMContentLoaded', async() => {
       [],
       ["team_img_1", "team_img_2", "team_img_3"],
       [],
-      ["now_img_1", "now_img_2", "now_img_3", "now_img_4"]
+      ["new_img_1", "new_img_2", "new_img_3", "new_img_4"]
     ],
-    container_id: ["serveRange", "team", "team_img", "now", "now_img"],
+    container_id: ["serveRange", "team", "team_img", "new", "new_img"],
     animationDuration: 500, // 动画持续0.5秒
     staggerDelay: 200       // 元素间错开0.2秒，单位毫秒
   });

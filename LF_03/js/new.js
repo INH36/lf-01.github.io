@@ -2,16 +2,16 @@ import { getHotPageList } from "../api/index.js"
 
 
 // 获取模板
-const getNowPageItemTem = (data) => {
+const getNewPageItemTem = (data) => {
     const tem = data.map((item, index)=>{
         return `
             <div class="w-80 flex flex-col gap-8 cursor-pointer" data-index="${index}">
                 <div class="w-full h-[500px] relative overflow-hidden rounded-lg transition-all duration-300 hover:scale-[1.05] image-container lazy-load-placeholder" data-thumbnail="./img${item.thumbnail}" data-image="./img${item.image}">
                     <img class="w-full h-full object-cover thumbnail-img" src="./img${item.thumbnail}" alt="" />
                 </div>
-                <div class="flex flex-col gap-4">
+                <div class="flex flex-col gap-4 transition-colors duration-200 hover:text-[#ff350d]">
                     <p class="text-xl font-normal truncate">${item.title}</p>
-                    <p class="text-sm text-gray-600 line-clamp-2">${item.dosc}</p>
+                    <p class="text-sm line-clamp-2">${item.dosc}</p>
                 </div>
             </div>
         `
@@ -56,8 +56,8 @@ const lazyLoadImages = () => {
 
 const init = async() => {
     const {data} = await getHotPageList()
-    const imgCom = document.getElementById('now_info')
-    imgCom.innerHTML = getNowPageItemTem(data)
+    const imgCom = document.getElementById('new_info')
+    imgCom.innerHTML = getNewPageItemTem(data)
     lazyLoadImages()
 }
 

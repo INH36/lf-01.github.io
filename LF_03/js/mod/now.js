@@ -1,13 +1,13 @@
-import { getHotNows } from '../../api/index.js';
+import { getHotNews } from '../../api/index.js';
 
 // 获取容器
-const nowContainer = document.getElementById('now_img');
+const newContainer = document.getElementById('new_img');
 
 // 模板生成
 const setHtml = (data) => {
     const tem = data.map((item,index)=>{
         return `
-            <div id="now_img_${index+1}" class="flex w-full h-full overflow-hidden flex-col gap-9 items-center">
+            <div id="new_img_${index+1}" class="flex w-full h-full overflow-hidden flex-col gap-9 items-center">
                     <div class="w-full h-[500px] overflow-hidden px-3 transition-all duration-500 hover:scale-[1.1]">
                         <img loading="lazy" class="h-full w-full object-cover" src="./${item.image}" alt="">
                     </div>
@@ -23,8 +23,8 @@ const setHtml = (data) => {
 }
 
 // 渲染
-export const initNow = async () => {
-    const res = await getHotNows()
-    const nowHtml = setHtml(res.data)
-    nowContainer.innerHTML = nowHtml
+export const initNew = async () => {
+    const res = await getHotNews()
+    const newHtml = setHtml(res.data)
+    newContainer.innerHTML = newHtml
 }
