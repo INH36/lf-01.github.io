@@ -73,13 +73,13 @@ export default class Banner {
       imgDiv.style.transitionDuration = `${this.fadeTime / 1000}s`;
       imgDiv.style.objectFit = 'cover';
       imgDiv.style.backgroundPosition = 'center';
-      imgDiv.dataset.index = index;    
+      imgDiv.dataset.index = index;   
+      imgDiv.loading='lazy' 
       if (index === 0) {
-        imgDiv.src = src;
-        imgDiv.srcset = getHighResImage(src) + ' 1.5x';
+        imgDiv.srcset = `${src} 1920w, ${getHighResImage(src)} 2160w`;
       } else {
-        imgDiv.src = src;
-        imgDiv.srcset = getHighResImage(src) + ' 1.5x';
+        imgDiv.style.display = 'none'
+        imgDiv.srcset = `${src} 1920w, ${getHighResImage(src)} 2160w`;
       }
 
       // 添加加载指示器
@@ -136,7 +136,7 @@ export default class Banner {
   }
 
 
-  // 显示图片 - 优化懒加载版本
+  // 显示图片
   showImage(index) {
     // 先隐藏所有图片
     const allImages = this.imageContainer.querySelectorAll('img[data-index]');
