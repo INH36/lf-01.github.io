@@ -27,7 +27,7 @@ export default class Banner {
 
   // 预加载并显示第一张图片
   preloadAndShowFirstImage() {
-    const firstImage = this.imageContainer.querySelector('div[data-index="0"]');
+    const firstImage = this.imageContainer.querySelector('img[data-index="0"]');
     if (firstImage) {
       this.loadImage(firstImage).then(() => {
         firstImage.classList.remove('opacity-0');
@@ -61,16 +61,20 @@ export default class Banner {
     this.container.appendChild(this.imageContainer);
 
     this.images.forEach((src, index) => {
-      const imgDiv = document.createElement('div');
+      const imgDiv = document.createElement('img');
       imgDiv.className = 'absolute top-0 left-0 w-full h-full opacity-0 transition-opacity';
       imgDiv.style.transitionDuration = `${this.fadeTime / 1000}s`;
-      imgDiv.style.backgroundSize = 'cover';
+      imgDiv.style.objectFit = 'cover';
       imgDiv.style.backgroundPosition = 'center';
       imgDiv.dataset.index = index;
       if (index === 0) {
-        imgDiv.style.backgroundImage = `url(${src})`;
+        // imgDiv.style.backgroundImage = `url(${src})`;
+        imgDiv.src = src;
+        imgDiv.srcset = src + ' 2x';
       } else {
-        imgDiv.dataset.src = src;
+        // imgDiv.dataset.src = src;
+        imgDiv.src = src;
+        imgDiv.srcset = src + ' 2x';
       }
 
       // 添加加载指示器
@@ -130,14 +134,14 @@ export default class Banner {
   // 显示图片 - 优化懒加载版本
   showImage(index) {
     // 先隐藏所有图片
-    const allImages = this.imageContainer.querySelectorAll('div[data-index]');
+    const allImages = this.imageContainer.querySelectorAll('img[data-index]');
     allImages.forEach(img => {
       img.classList.remove('opacity-100');
       img.classList.add('opacity-0');
     });
 
     // 获取当前需要显示的图片
-    const currentImage = this.imageContainer.querySelector(`div[data-index="${index}"]`);
+    const currentImage = this.imageContainer.querySelector(`img[data-index="${index}"]`);
     if (currentImage) {
       // 优化：使用Promise处理图片加载，提供更好的错误处理
       this.loadImage(currentImage).then(() => {
@@ -271,11 +275,11 @@ export default class Banner {
     for (let i = 1; i <= this.maxPreloadDistance; i++) {
       // 预加载下一张图片
       const nextIndex = (currentIndex + i) % totalImages;
-      const nextImage = this.imageContainer.querySelector(`div[data-index="${nextIndex}"]`);
+      const nextImage = this.imageContainer.querySelector(`img[data-index="${nextIndex}"]`);
       
       // 预加载上一张图片
       const prevIndex = (currentIndex - i + totalImages) % totalImages;
-      const prevImage = this.imageContainer.querySelector(`div[data-index="${prevIndex}"]`);
+      const prevImage = this.imageContainer.querySelector(`img[data-index="${prevIndex}"]`);
 
       // 异步预加载，不显示加载指示器
       if (nextImage && !this.loadedImages.has(nextIndex)) {
@@ -290,7 +294,7 @@ export default class Banner {
 
   // 更新指示器（统一的指示器更新方法）
   updateIndicators(activeIndex, startAnimation = true) {
-    const indicators = this.indicatorContainer.querySelectorAll('div[data-index]');
+    const indicators = this.indicatorContainer.querySelectorAll('.indicator-container[data-index]');
 
     if (indicators.length === 0) {
       console.error('未找到指示器元素');
@@ -308,7 +312,7 @@ export default class Banner {
     });
 
     // 激活当前指示器
-    const activeIndicator = this.indicatorContainer.querySelector(`div[data-index="${activeIndex}"]`);
+    const activeIndicator = this.indicatorContainer.querySelector(`.indicator-container[data-index="${activeIndex}"]`);
     if (activeIndicator) {
       activeIndicator.classList.add('active');
 
@@ -368,7 +372,7 @@ export default class Banner {
     }
 
     // 停止当前指示器动画
-    const activeIndicator = this.indicatorContainer.querySelector(`div[data-index="${this.currentIndex}"]`);
+    const activeIndicator = this.indicatorContainer.querySelector(`.indicator-container[data-index="${this.currentIndex}"]`);
     if (activeIndicator) {
       const progressCircle = activeIndicator.querySelector('.progress-ring__circle');
       if (progressCircle) {
@@ -392,7 +396,7 @@ export default class Banner {
     this.isPaused = false;
     
     // 获取当前指示器的进度
-    const activeIndicator = this.indicatorContainer.querySelector(`div[data-index="${this.currentIndex}"]`);
+    const activeIndicator = this.indicatorContainer.querySelector(`.indicator-container[data-index="${this.currentIndex}"]`);
     if (activeIndicator) {
       const progressCircle = activeIndicator.querySelector('.progress-ring__circle');
       if (progressCircle) {
@@ -436,7 +440,7 @@ export default class Banner {
   bindEvents() {
     // 使用箭头函数确保this绑定正确，便于后续移除事件监听器
     this.handleIndicatorClick = (e) => {
-      const indicator = e.target.closest('div[data-index]');
+      const indicator = e.target.closest('.indicator-container[data-index]');
       if (indicator) {
         const index = parseInt(indicator.dataset.index, 10);
         this.showImage(index);
