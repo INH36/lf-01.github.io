@@ -1,0 +1,39 @@
+// 颜色变量
+$baseColor: #bc574b;
+$primaryRed: #c83a30;
+$userIconColor: #ffc07a;
+$starIconColor: #fcd700;
+$forkIconColor: #90cbf7;
+$issueIconColor: #f38c9a;
+$backgroundColor: #ebebeb;
+$grayLight: #f5f5f5;
+$grayMedium: #d1d5db;
+$grayDark: #6b7280;
+$grayText: #9ca3af;
+
+// 尺寸变量
+$borderRadius: 0.375rem;
+$borderRadiusMd: 0.5rem;
+$spacing1: 0.25rem;
+$spacing2: 0.5rem;
+$spacing4: 1rem;
+$spacing5: 1.25rem;
+$spacing6: 1.5rem;
+
+// 字体大小
+$textSm: 0.875rem;
+$textBase: 1rem;
+$textLg: 1.125rem;
+$textXl: 1.25rem;
+
+// 响应式断点
+$breakpointSm: 640px;
+$breakpointMd: 768px;
+$breakpointLg: 1024px;
+
+// 动画时间
+$transitionDuration: 300ms;
+
+// 阴影
+$shadowSm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+$shadowMd: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);

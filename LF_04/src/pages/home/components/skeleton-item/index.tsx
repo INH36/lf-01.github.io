@@ -6,7 +6,7 @@ const SkeletonItem: React.FC = () => {
             <div className='h-6 w-8 bg-gray-300 rounded'></div>
             <div className='w-1/2 h-40 bg-gray-300 rounded-md'></div>
             <div className='h-6 w-24 bg-gray-300 rounded'></div>
-            <div className='flex gap-1 flex-col w-full px-4'>
+            <div className='flex gap-1 flex-col w-full px-4 justify-center items-center'>
                 <div className='flex gap-2 justify-start items-center'>
                     <div className='h-4 w-4 bg-gray-300 rounded-full'></div>
                     <div className='h-4 w-32 bg-gray-300 rounded'></div>

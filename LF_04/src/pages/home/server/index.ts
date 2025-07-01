@@ -1,4 +1,4 @@
-import http from "../../utils/request/http";
+import http from "../../../utils/request/http";
 import { repositories } from "../type";
 
 
