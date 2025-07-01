@@ -1,13 +1,12 @@
 import React from 'react';
-import RouterListener from '@/components/router-listener';
+import Home from './home';
 
-const App: React.FC = () => {
-   
-    return (
-        <div className='App'>
-            <RouterListener />
-        </div>
-    );
-};
+function App() {
+  return (
+    <>
+      <Home />
+    </>
+  );
+}
 
 export default App;

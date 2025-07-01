@@ -35,9 +35,5 @@ export default defineConfig({
     host: "0.0.0.0",
     port: 4124,
   },
-  base: './',
-  build: {
-    outDir: 'dist',
-  }
 });
 
