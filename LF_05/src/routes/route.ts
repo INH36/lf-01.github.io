@@ -1,17 +1,25 @@
-import { createElement, lazy } from "react";
-const Home = lazy(() => import("@/pages/home"));
+import Battle from "@/pages/battle";
+import Popular from "@/pages/popular";
+import { createElement } from "react";
 
 
 const LayoutRouter = [
   {
-    path: "/",
-    element: createElement(Home),
-    loader: () => import("@/pages/home"),
+    path: "/popular",
+    element: createElement(Popular),
+    loader: () => import("@/pages/popular"),
     meta: {
-      title: '首页',
-      icon: 'home'
+      title: 'Popular',
     },
   },
+  {
+    path: '/battle',
+    element: createElement(Battle),
+    loader: ()=> import("@/pages/battle"),
+    meta: {
+      title: 'Battle'
+    }
+  }
 ]
 
 export default LayoutRouter;

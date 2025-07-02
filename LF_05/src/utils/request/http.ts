@@ -1,11 +1,14 @@
-import axios from "axios";
-
+import axios from 'axios';
+import { message } from 'antd';
 
 const http = axios.create({
-  baseURL: "https://m1.apifoxmock.com/m1/6660612-6368793-default/api",
+  // baseURL: "https://m1.apifoxmock.com/m1/6660612-6368793-default/api",
+  // header: 'github_pat_'
+  baseURL: 'https://api.github.com',
   timeout: 5000,
   headers: {
     "Content-Type": "application/json;charset=utf-8",
+    // 'Bearer 11A4ZO6DI0sQ8iIGlymbA9_l6blLpAXbkuoa2F8Gc8se6ndNChJkj4pCzTBrqXgA6TJI3BIJVF0LJhUnPn'
   },
 });
 
@@ -41,6 +44,44 @@ http.interceptors.response.use(
     return response;
   },
   (error) => {
+    let errorMessage = '请求失败，请稍后重试';
+    if (error.response) {
+      const status = error.response.status;
+      switch (status) {
+        case 400:
+          errorMessage = '请求参数错误';
+          break;
+        case 401:
+          errorMessage = '未授权，请重新登录';
+          break;
+        case 403:
+          errorMessage = '禁止访问';
+          break;
+        case 404:
+          errorMessage = '请求的资源不存在';
+          break;
+        case 500:
+          errorMessage = '服务器内部错误';
+          break;
+        case 502:
+          errorMessage = '网关错误';
+          break;
+        case 503:
+          errorMessage = '服务不可用';
+          break;
+        default:
+          errorMessage = `请求失败 (${status})`;
+      }
+    }else if(error.request){
+      errorMessage = '请求超时，请稍后重试';
+    }else {
+      errorMessage = error.message || '未知错误';
+    }
+
+    if(errorMessage){
+      message.error(errorMessage);
+    }
+
     return Promise.reject(error);
   }
 );

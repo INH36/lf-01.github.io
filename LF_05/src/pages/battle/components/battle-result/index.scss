@@ -1,0 +1,48 @@
+.resule {
+    width: 75%;
+    display: flex;
+    gap: 4rem;
+    justify-content: center;
+    align-items: start;
+
+    &_item {
+        width: 300px;
+        padding: 40px 30px;
+        background-color: $grayMedium;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: .5rem;
+
+        &_img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            background-color: aqua;
+        }
+
+        &_info {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            justify-content: start;
+
+            & > li {
+                display: flex;
+                gap: 8px;
+                align-items: center;
+            }
+        }
+
+        .scores {
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .resle_name {
+            text-align: center;
+            font-weight: 600;
+            font-size: 20px;
+            color: $deepFontBlue;
+        }
+    }
+}
