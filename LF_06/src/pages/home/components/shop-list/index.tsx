@@ -1,23 +1,37 @@
 import { Card, Space, Tag } from 'antd';
 import React from 'react';
 
-const ShopList: React.FC = () => {
+interface Product {
+    id: number;
+    name: string;
+    price: number;
+    size: string;
+    image: string;
+    tags: string[];
+}
+
+interface ShopListProps {
+    products: Product[];
+    sortOrder?: 'asc' | 'desc' | null;
+}
+
+const ShopList: React.FC<ShopListProps> = ({ products, sortOrder }) => {
     return (
         <div className='w-full h-full flex flex-col'>
             <div className="mb-4">
                 <h2 className="text-2xl font-bold text-gray-800">商品列表</h2>
                 <p className="text-gray-600 mt-2">
-                    共找到 {filteredProducts.length} 件商品
-                    {filteredProducts.sortOrder && (
+                    共找到 {products.length} 件商品
+                    {sortOrder && (
                         <span className="ml-2">
-                            (按价格{filteredProducts.sortOrder === 'asc' ? '升序' : '降序'}排列)
+                            (按价格{sortOrder === 'asc' ? '升序' : '降序'}排列)
                         </span>
                     )}
                 </p>
             </div>
 
             <div className='w-full overflow-auto flex-1 grid xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-5'>
-                {filteredProducts.map(product => (
+                {products.map(product => (
                     <div key={product.id} className="w-full">
                         <Card
                             hoverable
@@ -55,7 +69,7 @@ const ShopList: React.FC = () => {
                 ))}
             </div>
 
-            {filteredProducts.length === 0 && (
+            {products.length === 0 && (
                 <div className="text-center py-12">
                     <div className="text-gray-400 text-lg">没有找到符合条件的商品</div>
                     <div className="text-gray-500 text-sm mt-2">请尝试调整筛选条件</div>

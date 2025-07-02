@@ -1,22 +1,23 @@
-import Layout from "@/layout";
 import { createElement } from "react";
 import { createBrowserRouter } from "react-router-dom";
-import LayoutRouter from "./route";
 import Error from "@/pages/error";
 import Home from "@/pages/home";
+import LazyComponent from "@/components/lazy-components";
+import PageLoading from "@/components/page-loading";
 
 // 创建带有导航事件监听的路由
 const router = createBrowserRouter([
   {
     path: "/",
-    element: createElement(Layout),
+    element: createElement(LazyComponent, {
+      importComponent: () => import('@/layout') as any,
+      fallback: createElement(PageLoading)
+    }),
     children: [
       {
         path: "/",
         element: createElement(Home),
-        loader: () => import("@/pages/home"),
       },
-      ...LayoutRouter
     ],
   },
   {

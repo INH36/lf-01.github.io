@@ -4,7 +4,7 @@ import "./index.css";
 // 使用memo优化组件，避免不必要的重新渲染
 const PageLoading: React.FC = memo(() => {
   return (
-    <div className="w-full h-full flex justify-center items-center">
+    <div className="w-screen h-screen flex justify-center items-center">
       <svg
         className="svg-loding"
         version="1.1"

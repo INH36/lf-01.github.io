@@ -9,7 +9,7 @@ const Layout: React.FC = () => {
         <Header />
       </header>
       <aside></aside>
-      <main className='w-screen h-[calc(100%-48px)]'>
+      <main className='w-screen h-[calc(100%-48px)] overflow-hidden'>
         <Outlet />
       </main>
     </div >
