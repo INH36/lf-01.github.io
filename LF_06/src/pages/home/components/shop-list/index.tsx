@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import { Card, Empty, Space, Tag, Modal, InputNumber, Radio, message } from 'antd';
+import { Empty, Space, Tag, Modal, InputNumber, Radio, message } from 'antd';
 import React, { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/store/store';
@@ -138,55 +138,47 @@ const ShopList: React.FC<ShopListProps> = () => {
             <div ref={containerRef} className='w-full overflow-auto px-2 py-2 flex-1 grid xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-5'>
                 {showProducts.map((product, index) => (
                     <div key={index} className="w-full">
-                        <Card
-                            hoverable
-                            cover={
-                                <div className="h-48 overflow-hidden w-full bg-gray-200 !flex items-center justify-center">
-                                    <img loading='lazy' className='w-full h-full object-cover' src={product.image} alt="" />
-                                </div>
-                            }
-                        >
-                            <Card.Meta
-                                title={product.name + '' + index}
-                                description={
-                                    <Space direction="vertical" className="w-full">
-                                        <div className="flex justify-between items-center">
-                                            <span className="text-xl font-bold text-red-500">
-                                                ¥{product.price}
+                        <div className="border rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden cursor-pointer">
+                            <div className="h-48 overflow-hidden w-full bg-gray-200 flex items-center justify-center">
+                                <img loading='lazy' className='w-full h-full object-cover' src={product.image} alt="" />
+                            </div>
+                            <div className="p-4">
+                                <h3 className="text-lg font-medium mb-2">{product.name + '' + index}</h3>
+                                <Space direction="vertical" className="w-full">
+                                    <div className="flex justify-between items-center">
+                                        <span className="text-xl font-bold text-red-500">
+                                            ¥{product.price}
+                                        </span>
+                                        <span className="text-sm text-gray-500 flex flex-col gap-1">
+                                            <span className="rounded-full">
+                                                尺寸：
                                             </span>
-                                            <span className="text-sm text-gray-500 flex flex-col gap-1">
-                                                <span className="rounded-full">
-                                                    尺寸：
-                                                </span>
-                                                <div>
-                                                    {
-                                                        product.size.map(size => (
-                                                            <Tag key={size} color="blue" className="rounded-full">
-                                                                {size}
-                                                            </Tag>
-                                                        ))
-                                                    }
-                                                </div>
-
-                                            </span>
-                                        </div>
-                                        <div className='flex justify-between items-center'>
                                             <div>
-                                                {product.tags.map(tag => (
-                                                    <Tag key={tag} color="blue" className="mb-1">
-                                                        {tag}
-                                                    </Tag>
-                                                ))}
+                                                {
+                                                    product.size.map(size => (
+                                                        <Tag key={size} color="blue" className="rounded-full">
+                                                            {size}
+                                                        </Tag>
+                                                    ))
+                                                }
                                             </div>
-
-                                            <i onClick={() => showAddToCartModal(product)} className='bg-blue-500 text-white px-2 hover:bg-blue-300 transition-all da200 py-1 rounded-full cursor-pointer'>
-                                                <FontAwesomeIcon icon={faPlus} />
-                                            </i>
+                                        </span>
+                                    </div>
+                                    <div className='flex justify-between items-center'>
+                                        <div>
+                                            {product.tags.map(tag => (
+                                                <Tag key={tag} color="blue" className="mb-1">
+                                                    {tag}
+                                                </Tag>
+                                            ))}
                                         </div>
-                                    </Space>
-                                }
-                            />
-                        </Card>
+                                        <i onClick={() => showAddToCartModal(product)} className='bg-blue-500 text-white px-2 hover:bg-blue-300 transition-all da200 py-1 rounded-full cursor-pointer'>
+                                            <FontAwesomeIcon icon={faPlus} />
+                                        </i>
+                                    </div>
+                                </Space>
+                            </div>
+                        </div>
                     </div>
                 ))}
             </div>

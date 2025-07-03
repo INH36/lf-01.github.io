@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@/store/store';
 import { removeFromCart, updateCartQuantity, clearCart, toggleCartIconClick } from '@/store/silce/shopSlice';
-import { Card, Button, InputNumber, Empty, Popconfirm, message } from 'antd';
+import { Button, InputNumber, Empty, Popconfirm, message } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
@@ -98,7 +98,7 @@ const ShopCarts: React.FC = () => {
 
                 <div className="flex-1 overflow-auto space-y-3 mb-4">
                     {cart.map((item) => (
-                        <Card key={`${item.product.id}-${item.selectedSize}`} className="shadow-sm hover:shadow-md transition-shadow">
+                        <div key={`${item.product.id}-${item.selectedSize}`} className="shadow-sm border p-5 rounded-xl hover:shadow-md transition-shadow">
                             <div className="flex items-center gap-4">
                                 <div className="flex-shrink-0 flex gap-2">
                                     <img
@@ -148,7 +148,7 @@ const ShopCarts: React.FC = () => {
 
 
                             </div>
-                        </Card>
+                        </div>
                     ))}
                 </div>
                 <div className="border-t pt-4">

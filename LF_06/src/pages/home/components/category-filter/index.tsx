@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Slider, InputNumber, Card, Divider, Space, Button, Checkbox } from 'antd';
+
 import { SortAscendingOutlined, SortDescendingOutlined, ReloadOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/store/store';
@@ -56,7 +57,8 @@ const CategoryFilter: React.FC = () => {
 
 
   return (
-    <Card title="商品筛选" className="w-full max-w-md">
+    <div className="w-full max-w-md bg-white shadow-md rounded-md p-4">
+      <span>商品筛选</span>
       <Space direction="vertical" className="w-full" size="small">
         <div>
           <h5 className="text-sm font-medium text-gray-700 mb-2">尺寸选择</h5>
@@ -147,7 +149,7 @@ const CategoryFilter: React.FC = () => {
           重置筛选
         </Button>
       </Space>
-    </Card>
+    </div>
   );
 }
 
