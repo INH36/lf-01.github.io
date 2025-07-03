@@ -26,7 +26,12 @@ const Header: React.FC = () => {
 
             <div className=' relative flex justify-center items-center cursor-pointer' onClick={clickShopCart}>
                 <FontAwesomeIcon className='text-white text-2xl' icon={faCartShopping} />
-                <i className='absolute top-[-5px] right-[-14px] border border-white bg-red-500 min-w-[20px] h-[20px] rounded-full text-[10px] text-white flex justify-center items-center px-1'>99+</i>
+                <i className='absolute top-[-5px] right-[-14px]
+                 border border-white bg-red-500 
+                 min-w-[20px] h-[20px] rounded-full text-[10px] 
+                 text-white flex justify-center items-center px-1'>
+                    {shop.cart.length}
+                </i>
             </div>
         </div>
     );

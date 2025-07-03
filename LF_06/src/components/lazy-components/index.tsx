@@ -1,4 +1,4 @@
-import React, { Suspense, ComponentType } from 'react';
+import React, { Suspense, ComponentType, useMemo, lazy } from 'react';
 import { Spin } from 'antd';
 
 // 通用懒加载组件的 Props 接口
@@ -25,8 +25,8 @@ const LazyComponent = <T,>({
   containerClassName = 'w-full h-full flex items-center justify-center',
   spinSize = 'default'
 }: LazyComponentProps<T>) => {
-  // 创建懒加载组件
-  const LazyLoadedComponent = React.lazy(importComponent);
+  // 使用 useMemo 缓存懒加载组件，避免重复创建
+  const LazyLoadedComponent = useMemo(() => lazy(importComponent), [importComponent]);
 
   // 默认的 加载
   const defaultFallback = (

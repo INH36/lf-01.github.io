@@ -4,7 +4,7 @@ import { message } from 'antd';
 const http = axios.create({
   // baseURL: "https://m1.apifoxmock.com/m1/6660612-6368793-default/api",
   // header: 'github_pat_'
-  baseURL: 'https://api.github.com',
+  baseURL: 'https://m1.apifoxmock.com/m1/6660612-6368793-default/',
   timeout: 5000,
   headers: {
     "Content-Type": "application/json;charset=utf-8",
