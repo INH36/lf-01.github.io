@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/store/store';
 import { toggleCartIconClick } from '@/store/silce/shopSlice';
 
+
 const Home: React.FC = () => {
     const shop = useSelector((state: RootState) => state.shop)
     const dispatch = useDispatch();
