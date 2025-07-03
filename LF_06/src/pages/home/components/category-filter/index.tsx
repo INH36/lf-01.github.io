@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Slider, InputNumber, Card, Divider, Space, Button, Checkbox } from 'antd';
+import { Slider, InputNumber, Divider, Space, Checkbox } from 'antd';
 
 import { SortAscendingOutlined, SortDescendingOutlined, ReloadOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
@@ -120,34 +120,39 @@ const CategoryFilter: React.FC = () => {
 
         {/* 价格排序 */}
         <h4 className="font-medium">价格排序</h4>
-        <Space className="w-full">
-          <Button
-            type={shop.sortOrder === 'asc' ? 'primary' : 'default'}
-            icon={<SortAscendingOutlined />}
+        <div className="w-full flex gap-2">
+          <button
             onClick={() => handleSortChange(shop.sortOrder === 'asc' ? 'desc' : 'asc')}
-            className="flex-1"
+            className={`flex-1 px-4 py-2 rounded border transition-colors flex items-center justify-center gap-2 ${
+              shop.sortOrder === 'asc' 
+                ? 'bg-blue-500 text-white border-blue-500 hover:bg-blue-600' 
+                : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
+            }`}
           >
+            <SortAscendingOutlined />
             价格升序
-          </Button>
-          <Button
-            type={shop.sortOrder === 'desc' ? 'primary' : 'default'}
-            icon={<SortDescendingOutlined />}
+          </button>
+          <button
             onClick={() => handleSortChange(shop.sortOrder === 'desc' ? 'asc' : 'desc')}
-            className="flex-1"
+            className={`flex-1 px-4 py-2 rounded border transition-colors flex items-center justify-center gap-2 ${
+              shop.sortOrder === 'desc' 
+                ? 'bg-blue-500 text-white border-blue-500 hover:bg-blue-600' 
+                : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
+            }`}
           >
+            <SortDescendingOutlined />
             价格降序
-          </Button>
-        </Space>
+          </button>
+        </div>
 
         <Divider />
-        <Button
-          type="default"
-          icon={<ReloadOutlined />}
+        <button
           onClick={handleReset}
-          className="w-full"
+          className="w-full px-4 py-2 rounded border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 transition-colors flex items-center justify-center gap-2"
         >
+          <ReloadOutlined />
           重置筛选
-        </Button>
+        </button>
       </Space>
     </div>
   );

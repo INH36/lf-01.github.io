@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@/store/store';
 import { removeFromCart, updateCartQuantity, clearCart, toggleCartIconClick } from '@/store/silce/shopSlice';
-import { Button, InputNumber, Empty, Popconfirm, message } from 'antd';
+import { InputNumber, Empty, Popconfirm, message } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
@@ -85,14 +85,12 @@ const ShopCarts: React.FC = () => {
                         okText="确定"
                         cancelText="取消"
                     >
-                        <Button
-                            type="text"
-                            danger
-                            icon={<FontAwesomeIcon icon={faTrash} />}
-                            className="flex items-center gap-1"
+                        <button
+                            className="flex items-center gap-1 px-3 py-1 text-red-500 hover:text-red-600 hover:bg-red-50 rounded transition-colors"
                         >
+                            <FontAwesomeIcon icon={faTrash} />
                             清空购物车
-                        </Button>
+                        </button>
                     </Popconfirm>
                 </div>
 
@@ -137,12 +135,11 @@ const ShopCarts: React.FC = () => {
                                         okText="确定"
                                         cancelText="取消"
                                     >
-                                        <Button
-                                            type="text"
-                                            danger
-                                            icon={<FontAwesomeIcon icon={faTrash} />}
-                                            className="flex-shrink-0"
-                                        />
+                                        <button
+                                            className="flex-shrink-0 p-2 text-red-500 hover:text-red-600 hover:bg-red-50 rounded transition-colors"
+                                        >
+                                            <FontAwesomeIcon icon={faTrash} />
+                                        </button>
                                     </Popconfirm>
                                 </div>
 
@@ -162,15 +159,12 @@ const ShopCarts: React.FC = () => {
                             </span>
                         </div>
 
-                        <Button
-                            type="primary"
-                            size="large"
-                            block
+                        <button
                             onClick={handleCheckout}
-                            className="h-12 text-lg font-medium"
+                            className="w-full h-12 text-lg font-medium bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
                         >
                             立即结算
-                        </Button>
+                        </button>
                     </div>
                 </div>
             </div >

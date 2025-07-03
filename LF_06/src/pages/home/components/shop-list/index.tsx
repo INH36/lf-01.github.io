@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import { Empty, Space, Tag, Modal, InputNumber, Radio, message } from 'antd';
+import { Empty, Space, Tag, Modal, InputNumber, message } from 'antd';
 import React, { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/store/store';
@@ -222,23 +222,30 @@ const ShopList: React.FC<ShopListProps> = () => {
                             <label className="block text-sm font-medium text-gray-700 mb-2">
                                 选择尺寸 <span className="text-red-500">*</span>
                             </label>
-                            <Radio.Group
-                                value={selectedSize}
-                                onChange={(e) => setSelectedSize(e.target.value)}
-                                className="w-full"
-                            >
+                            <div className="w-full">
                                 <div className="grid grid-cols-3 gap-2">
                                     {selectedProduct.size.map(size => (
-                                        <Radio.Button
+                                        <label
                                             key={size}
-                                            value={size}
-                                            className="text-center"
+                                            className={`cursor-pointer border rounded px-3 py-2 text-center transition-colors ${
+                                                selectedSize === size
+                                                    ? 'bg-blue-500 text-white border-blue-500'
+                                                    : 'bg-white text-gray-700 border-gray-300 hover:border-blue-300'
+                                            }`}
                                         >
+                                            <input
+                                                type="radio"
+                                                name="size"
+                                                value={size}
+                                                checked={selectedSize === size}
+                                                onChange={(e) => setSelectedSize(e.target.value)}
+                                                className="sr-only"
+                                            />
                                             {size}
-                                        </Radio.Button>
+                                        </label>
                                     ))}
                                 </div>
-                            </Radio.Group>
+                            </div>
                         </div>
 
                         <div className='flex gap-3 items-center'>
