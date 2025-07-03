@@ -1,6 +1,6 @@
 import React from 'react';
-import { Outlet } from 'react-router';
 import Header from './modules/header';
+import Home from '@/pages/home';
 
 const Layout: React.FC = () => {
   return (
@@ -10,7 +10,7 @@ const Layout: React.FC = () => {
       </header>
       <aside></aside>
       <main className='w-screen h-[calc(100%-48px)] overflow-hidden'>
-        <Outlet />
+        <Home />
       </main>
     </div >
   );

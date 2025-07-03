@@ -2,15 +2,11 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { visualizer } from 'rollup-plugin-visualizer'
-import Components from 'unplugin-react-components/vite';
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
     react(),
-    Components({
-      dts: true
-    }), 
     visualizer({open: true}),
   ],
   resolve: {
@@ -36,20 +32,23 @@ export default defineConfig({
             }
             else if(id.includes('antd')) {
               return 'antd-vendor';
-            } else if (id.includes('@ant-design')) {
-              return 'antd-design-vendor';
-            } else if (id.includes('@fortawesome') || id.includes('@remix')){
-              return 'fortawesome-remix-vendor'
-            }  else {
+            } else if(id.includes('rc')) {
+              return 'rc-vendor';
+            }else {
               return 'others-vendor';
             }
           }
+          // if(id.includes("node_modules")) {
+          //   return id .toString() .split("node_modules/")[1] .split("/")[0] .toString(); 
+          // }
         },
         chunkFileNames: 'static/js/[name]-[hash].js',  // 引入文件名称
         entryFileNames: 'static/js/[name]-[hash].js',  // 包入口文件名称
         assetFileNames: 'static/[ext]/[name]-[hash].[ext]',  // 资源文件
       }
-    }
+    },
+    reportCompressedSize: false,
+    sourcemap: false
   },
   server: {
     host: "0.0.0.0",

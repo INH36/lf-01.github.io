@@ -1,11 +1,11 @@
 import React from 'react';
-import RouterListener from '@/components/router-listener';
+import Layout from './layout';
 
 const App: React.FC = () => {
    
     return (
         <div className='App'>
-            <RouterListener />
+            <Layout />
         </div>
     );
 };

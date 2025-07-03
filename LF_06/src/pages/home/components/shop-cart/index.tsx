@@ -2,9 +2,9 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@/store/store';
 import { removeFromCart, updateCartQuantity, clearCart, toggleCartIconClick } from '@/store/silce/shopSlice';
-import { InputNumber, Empty, Popconfirm, message } from 'antd';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { Popconfirm, message } from 'antd';
+import shopCartIcon from '@/assets/shop-cart.svg'
+import clearIcon from '@/assets/clear.svg'
 
 const ShopCarts: React.FC = () => {
     const dispatch = useDispatch();
@@ -55,16 +55,12 @@ const ShopCarts: React.FC = () => {
     if (cart.length === 0) {
         return (
             <div className="w-full h-full flex flex-col items-center justify-center p-8">
-                <Empty
-                    image={<FontAwesomeIcon icon={faShoppingCart} className="text-6xl text-gray-300" />}
-                    description={
-                        <span className="text-gray-500">
-                            购物车是空的
-                            <br />
-                            快去添加一些商品吧！
-                        </span>
-                    }
-                />
+                <div className="flex flex-col items-center justify-center py-8">
+                    <svg className="w-16 h-16 text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 11-4 0v-6m4 0V9a2 2 0 10-4 0v4.01"></path>
+                    </svg>
+                    <p className="text-gray-500">购物车为空</p>
+                </div>
             </div>
         );
     }
@@ -74,7 +70,7 @@ const ShopCarts: React.FC = () => {
             <div className="w-full h-full flex flex-col">
                 <div className="flex justify-between items-center mb-4">
                     <h2 className="text-2xl font-bold text-gray-800 flex items-center gap-2">
-                        <FontAwesomeIcon icon={faShoppingCart} className="text-blue-500" />
+                        <img src={shopCartIcon} alt="" className='w-8 h-8 text-black' />
                         购物车
                         <span className="text-sm font-normal text-gray-500">({totalQuantity}件商品)</span>
                     </h2>
@@ -88,7 +84,7 @@ const ShopCarts: React.FC = () => {
                         <button
                             className="flex items-center gap-1 px-3 py-1 text-red-500 hover:text-red-600 hover:bg-red-50 rounded transition-colors"
                         >
-                            <FontAwesomeIcon icon={faTrash} />
+                            <img className='w-5 h-5' src={clearIcon} alt="" />
                             清空购物车
                         </button>
                     </Popconfirm>
@@ -113,11 +109,12 @@ const ShopCarts: React.FC = () => {
                                         </span>
                                         <div className='text-xs text-gray-500 flex gap-2'>
                                             <span>数量：
-                                                <InputNumber
-                                                    className="font-medium"
+                                                <input
+                                                    type="number"
+                                                    className="font-medium w-16 px-2 py-1 border border-gray-300 rounded text-xs focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-transparent"
                                                     value={item.num}
                                                     min={1}
-                                                    onChange={(value) => handleQuantityChange(item.product.id, item.selectedSize, value as number)} />
+                                                    onChange={(e) => handleQuantityChange(item.product.id, item.selectedSize, parseInt(e.target.value) || 1)} />
                                             </span>
                                         </div>
                                     </div>
@@ -138,7 +135,7 @@ const ShopCarts: React.FC = () => {
                                         <button
                                             className="flex-shrink-0 p-2 text-red-500 hover:text-red-600 hover:bg-red-50 rounded transition-colors"
                                         >
-                                            <FontAwesomeIcon icon={faTrash} />
+                                            <img className='w-5 h-5' src={clearIcon} alt="" />
                                         </button>
                                     </Popconfirm>
                                 </div>
