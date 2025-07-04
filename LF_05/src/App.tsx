@@ -10,5 +10,6 @@ const App: React.FC = () => {
 };
 
 // 测试husky和lint-staged配置 - 最终测试
+const   badFormat   =   "test"   ;   // 故意的格式问题
 
 export default App;
