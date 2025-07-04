@@ -1,6 +1,9 @@
-import Battle from "@/pages/battle";
+
+
 import Popular from "@/pages/popular";
-import { createElement } from "react";
+import { createElement, lazy } from "react";
+const Battle = lazy(()=>import("@/pages/battle"));
+const BattleResult = lazy(()=>import("@/pages/battle-result"));
 
 
 const LayoutRouter = [
@@ -15,11 +18,21 @@ const LayoutRouter = [
   {
     path: '/battle',
     element: createElement(Battle),
-    loader: ()=> import("@/pages/battle"),
+    loader: () => import("@/pages/battle"),
     meta: {
       title: 'Battle'
-    }
-  }
+    },
+    children: [
+      {
+        path: '/battle/result',
+        element: createElement(BattleResult),
+        meta: {
+          title: 'Battle Result'
+        }
+      }
+    ]
+  },
+
 ]
 
 export default LayoutRouter;

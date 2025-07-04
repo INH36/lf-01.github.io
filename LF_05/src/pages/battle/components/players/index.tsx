@@ -2,28 +2,19 @@ import React, { useEffect, useState } from 'react';
 import './index.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
-import { getUserInfo } from '../../server';
-import { GitHubUser } from '../../type';
-import { useLocation } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 
-interface PlayersProps {
-    onBattle: (playerOne: GitHubUser, playerTwo: GitHubUser) => void;
-    isLoading: boolean;
-}
 
-const Players: React.FC<PlayersProps> = ({ onBattle, isLoading }) => {
+const Players: React.FC = () => {
     const [playerOne, setPlayerOne] = useState("");
     const [playerTwo, setPlayerTwo] = useState("");
     const [submittedOne, setSubmittedOne] = useState(false);
     const [submittedTwo, setSubmittedTwo] = useState(false);
-    const [userOne, setUserOne] = useState<GitHubUser>();
-    const [userTwo, setUserTwo] = useState<GitHubUser>();
     const [loadingOne, setLoadingOne] = useState(false);
     const [loadingTwo, setLoadingTwo] = useState(false);
-    const [errorOne, setErrorOne] = useState<string>('');
-    const [errorTwo, setErrorTwo] = useState<string>('');
 
     const location = useLocation()
+    const navigate = useNavigate()
 
     useEffect(() => {
         const url = new URLSearchParams(location.search)
@@ -35,8 +26,6 @@ const Players: React.FC<PlayersProps> = ({ onBattle, isLoading }) => {
                 setPlayerOne(one)
                 setSubmittedOne(true)
                 setLoadingOne(true)
-                const userData = await getUserInfo(one.trim())
-                setUserOne(userData)
                 setLoadingOne(false)
 
             }
@@ -44,13 +33,10 @@ const Players: React.FC<PlayersProps> = ({ onBattle, isLoading }) => {
                 setPlayerTwo(two)
                 setSubmittedTwo(true)
                 setLoadingTwo(true)
-                const userData = await getUserInfo(two.trim())
-                setUserTwo(userData)
                 setLoadingTwo(false)
 
             }
         }
-
         loadUserData()
     }, [location])
 
@@ -58,12 +44,9 @@ const Players: React.FC<PlayersProps> = ({ onBattle, isLoading }) => {
         e.preventDefault();
         if (!playerOne.trim()) return;
         setLoadingOne(true);
-        setErrorOne('');
         const url = new URL(window.location.href)
         url.searchParams.set('one', playerOne)
         window.history.replaceState(null, '', url.toString())
-        const userData = await getUserInfo(playerOne.trim());
-        setUserOne(userData);
         setSubmittedOne(true);
         setLoadingOne(false);
 
@@ -73,12 +56,10 @@ const Players: React.FC<PlayersProps> = ({ onBattle, isLoading }) => {
         e.preventDefault();
         if (!playerTwo.trim()) return;
         setLoadingTwo(true);
-        setErrorTwo('');
+
         const url = new URL(window.location.href)
         url.searchParams.set('two', playerTwo)
         window.history.replaceState(null, '', url.toString())
-        const userData = await getUserInfo(playerTwo.trim());
-        setUserTwo(userData);
         setSubmittedTwo(true);
         setLoadingTwo(false);
 
@@ -88,19 +69,16 @@ const Players: React.FC<PlayersProps> = ({ onBattle, isLoading }) => {
         if (type === 'one') {
             setPlayerOne('');
             setSubmittedOne(false);
-            setUserOne(undefined);
-            setErrorOne('');
+
         } else {
             setPlayerTwo('');
             setSubmittedTwo(false);
-            setUserTwo(undefined);
-            setErrorTwo('');
         }
     };
 
     const battle = () => {
-        if (userOne && userTwo) {
-            onBattle(userOne, userTwo);
+        if (playerOne && playerTwo) {
+            navigate(`/battle/result?one=${playerOne}&two=${playerTwo}`)
         }
     };
 
@@ -127,7 +105,7 @@ const Players: React.FC<PlayersProps> = ({ onBattle, isLoading }) => {
                             {loadingOne ? 'LOADING...' : 'SUBMIT'}
                         </button>
                     </form>
-                    {errorOne && <div className="error-message">{errorOne}</div>}
+
                     <div className='player-user' style={{ display: submittedOne ? 'flex' : 'none' }}>
                         <div className='player-avater'>
                             <img loading='lazy' src={`https://github.com/${playerOne}.png?size=200`} alt={playerOne} />
@@ -157,7 +135,7 @@ const Players: React.FC<PlayersProps> = ({ onBattle, isLoading }) => {
                             {loadingTwo ? 'LOADING...' : 'SUBMIT'}
                         </button>
                     </form>
-                    {errorTwo && <div className="error-message">{errorTwo}</div>}
+
                     <div className='player-user' style={{ display: submittedTwo ? 'flex' : 'none' }}>
                         <div className='player-avater'>
                             <img loading='lazy' src={`https://github.com/${playerTwo}.png?size=200`} alt={playerTwo} />
@@ -170,11 +148,11 @@ const Players: React.FC<PlayersProps> = ({ onBattle, isLoading }) => {
                 </div>
             </div>
             <div
-                className={`battle-btn ${isLoading ? 'loading' : ''}`}
+                className={`battle-btn`}
                 style={{ display: submittedOne && submittedTwo ? 'flex' : 'none' }}
-                onClick={!isLoading ? battle : undefined}
+                onClick={() => battle()}
             >
-                {isLoading ? 'BATTLING...' : 'BATTLE'}
+                BATTLING
             </div>
         </div>
     );

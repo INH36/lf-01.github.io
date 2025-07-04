@@ -1,9 +1,18 @@
 .resule {
-    width: 75%;
+    width: 100%;
     display: flex;
     gap: 4rem;
     justify-content: center;
-    align-items: start;
+    align-items: center;
+    flex-direction: column;
+
+    .res_con {
+        width: 75%;
+        display: flex;
+        gap: 7rem;
+        justify-content: center;
+        align-items: center;
+    }
 
     &_item {
         width: 300px;
@@ -44,5 +53,21 @@
             font-size: 20px;
             color: $deepFontBlue;
         }
+    }
+}
+
+.reset-btn {
+    margin-top: 2rem;
+    padding: 10px 42px;
+    border-radius: 12px;
+    background-color: #bc574b;
+    color: aliceblue;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s;
+
+    &:hover {
+        background-color: #a04a3e;
     }
 }
