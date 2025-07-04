@@ -9,6 +9,6 @@ const App: React.FC = () => {
 	);
 };
 
-// 测试husky和lint-staged配置
+// 测试husky和lint-staged配置 - 最终测试
 
 export default App;
