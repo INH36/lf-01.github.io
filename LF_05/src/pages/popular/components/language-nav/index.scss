@@ -1,26 +1,26 @@
 .language-nav {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  gap: $spacing4;
-  padding: $spacing2 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	gap: $spacing4;
+	padding: $spacing2 0;
 
-  .active-filter {
-    font-weight: 600;
-    font-size: $textSm;
-    color: $baseColor;
-  }
+	.active-filter {
+		font-weight: 600;
+		font-size: $textSm;
+		color: $baseColor;
+	}
 
-  .inactive-filter {
-    font-weight: 600;
-    font-size: $textSm;
-    color: inherit;
-    cursor: pointer;
-    transition: color 0.2s;
-    
-    &:hover {
-      color: $baseColor;
-    }
-  }
+	.inactive-filter {
+		font-weight: 600;
+		font-size: $textSm;
+		color: inherit;
+		cursor: pointer;
+		transition: color 0.2s;
+
+		&:hover {
+			color: $baseColor;
+		}
+	}
 }

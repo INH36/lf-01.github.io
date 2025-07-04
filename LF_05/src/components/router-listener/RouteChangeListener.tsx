@@ -6,14 +6,13 @@ import { useLocation } from 'react-router-dom';
  */
 
 const RouteChangeListener: React.FC = () => {
-  const location = useLocation();
+	const location = useLocation();
 
-  useEffect(() => {
-    console.log('路由变化:', location.pathname);
-    
-  }, [location.pathname]);
+	useEffect(() => {
+		console.log('路由变化:', location.pathname);
+	}, [location.pathname]);
 
-  return null;
+	return null;
 };
 
 export default RouteChangeListener;

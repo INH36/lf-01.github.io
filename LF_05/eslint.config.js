@@ -1,29 +1,62 @@
-import js from '@eslint/js'
-import globals from 'globals'
-import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
-import tseslint from 'typescript-eslint'
+import js from '@eslint/js';
+import globals from 'globals';
+import tseslint from 'typescript-eslint';
+import pluginReact from 'eslint-plugin-react';
+import { defineConfig } from 'eslint/config';
 
-export default tseslint.config(
-  { ignores: ['dist'] },
-  {
-    extends: [js.configs.recommended, ...tseslint.configs.recommended],
-    files: ['**/*.{ts,tsx}'],
-    languageOptions: {
-      ecmaVersion: 2020,
-      globals: globals.browser,
-    },
-    plugins: {
-      'react-hooks': reactHooks,
-      'react-refresh': reactRefresh,
-    },
-    rules: {
-      ...reactHooks.configs.recommended.rules,
-      'react-refresh/only-export-components': [
-        'warn',
-        { allowConstantExport: true },
-      ],
-      '@typescript-eslint/no-explicit-any': 'off',
-    },
-  },
-)
+export default defineConfig([
+	{
+		files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+		extends: ['airbnb', 'airbnb-typescript', 'prettier'],
+		ignores: [
+			'node_modules/**',
+			'dist/**',
+			'build/**',
+			'out/**',
+			'.next/**',
+			'.nuxt/**',
+			'.output/**',
+			'.vercel/**',
+			'.netlify/**',
+			'.cache/**',
+			'.parcel-cache/**',
+			'.vite/**',
+			'.turbo/**',
+			'*.tsbuildinfo',
+			'tsconfig.tsbuildinfo',
+			'coverage/**',
+			'storybook-static/**',
+			'public/vendor/**',
+			'public/libs/**',
+			'stats.html',
+			'bundle-analyzer-report.html',
+		],
+		languageOptions: {
+			ecmaVersion: 2021,
+			sourceType: 'module',
+			globals: globals.browser,
+		},
+		settings: {
+			react: {
+				version: 'detect',
+			},
+		},
+		plugins: {
+			js,
+			react: pluginReact,
+		},
+		rules: {
+			...js.configs.recommended.rules,
+			...pluginReact.configs.recommended.rules,
+		},
+	},
+	...tseslint.configs.recommended,
+
+	{
+		rules: {
+			'react/react-in-jsx-scope': 'off',
+			'react/prop-types': 'off',
+			'@typescript-eslint/no-explicit-any': 'off',
+		},
+	},
+]);

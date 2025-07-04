@@ -1,73 +1,73 @@
 .resule {
-    width: 100%;
-    display: flex;
-    gap: 4rem;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+	width: 100%;
+	display: flex;
+	gap: 4rem;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 
-    .res_con {
-        width: 75%;
-        display: flex;
-        gap: 7rem;
-        justify-content: center;
-        align-items: center;
-    }
+	.res_con {
+		width: 75%;
+		display: flex;
+		gap: 7rem;
+		justify-content: center;
+		align-items: center;
+	}
 
-    &_item {
-        width: 300px;
-        padding: 40px 30px;
-        background-color: $grayMedium;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: .5rem;
+	&_item {
+		width: 300px;
+		padding: 40px 30px;
+		background-color: $grayMedium;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: 0.5rem;
 
-        &_img {
-            width: 100%;
-            aspect-ratio: 1/1;
-            background-color: aqua;
-        }
+		&_img {
+			width: 100%;
+			aspect-ratio: 1/1;
+			background-color: aqua;
+		}
 
-        &_info {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            justify-content: start;
+		&_info {
+			display: flex;
+			flex-direction: column;
+			gap: 6px;
+			justify-content: start;
 
-            & > li {
-                display: flex;
-                gap: 8px;
-                align-items: center;
-            }
-        }
+			& > li {
+				display: flex;
+				gap: 8px;
+				align-items: center;
+			}
+		}
 
-        .scores {
-            text-align: center;
-            font-weight: 600;
-        }
+		.scores {
+			text-align: center;
+			font-weight: 600;
+		}
 
-        .resle_name {
-            text-align: center;
-            font-weight: 600;
-            font-size: 20px;
-            color: $deepFontBlue;
-        }
-    }
+		.resle_name {
+			text-align: center;
+			font-weight: 600;
+			font-size: 20px;
+			color: $deepFontBlue;
+		}
+	}
 }
 
 .reset-btn {
-    margin-top: 2rem;
-    padding: 10px 42px;
-    border-radius: 12px;
-    background-color: #bc574b;
-    color: aliceblue;
-    border: none;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background-color 0.2s;
+	margin-top: 2rem;
+	padding: 10px 42px;
+	border-radius: 12px;
+	background-color: #bc574b;
+	color: aliceblue;
+	border: none;
+	cursor: pointer;
+	font-weight: 600;
+	transition: background-color 0.2s;
 
-    &:hover {
-        background-color: #a04a3e;
-    }
+	&:hover {
+		background-color: #a04a3e;
+	}
 }

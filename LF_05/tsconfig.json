@@ -1,36 +1,36 @@
 {
-  "compilerOptions": {
-    "target": "ESNext",
-    "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
-    "skipLibCheck": true,
-    "moduleResolution": "node",
-    "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx",
-    "allowJs": true,
-    "jsxImportSource": "react",
-    "types": ["react", "node"],
-    "baseUrl": "./",
-    "paths": {
-      "@/*": ["src/*"]
-    },
-    "strict": true,
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
-    "noFallthroughCasesInSwitch": true,
-    "plugins": [
-      {
-        "name": "typescript-plugin-css-modules"
-      }
-    ],
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "experimentalDecorators": true
-  },
-  "include": ["src", "src/utils/api/.ts"],
-  "exclude": ["node_modules", "dist"]
+	"compilerOptions": {
+		"target": "ESNext",
+		"useDefineForClassFields": true,
+		"lib": ["ES2020", "DOM", "DOM.Iterable"],
+		"module": "ESNext",
+		"skipLibCheck": true,
+		"moduleResolution": "node",
+		"allowImportingTsExtensions": true,
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"noEmit": true,
+		"jsx": "react-jsx",
+		"allowJs": true,
+		"jsxImportSource": "react",
+		"types": ["react", "node"],
+		"baseUrl": "./",
+		"paths": {
+			"@/*": ["src/*"]
+		},
+		"strict": true,
+		"noUnusedLocals": false,
+		"noUnusedParameters": false,
+		"noFallthroughCasesInSwitch": true,
+		"plugins": [
+			{
+				"name": "typescript-plugin-css-modules"
+			}
+		],
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"experimentalDecorators": true
+	},
+	"include": ["src", "src/utils/api/.ts"],
+	"exclude": ["node_modules", "dist"]
 }
