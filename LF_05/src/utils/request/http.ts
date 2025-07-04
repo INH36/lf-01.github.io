@@ -20,6 +20,7 @@ http.get = (url: string, params?: any) => {
 	});
 };
 
+
 http.post = (url: string, data?: any, params?: any) => {
 	return http.request({
 		url,
