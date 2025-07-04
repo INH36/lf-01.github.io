@@ -9,4 +9,7 @@ const App: React.FC = () => {
 	);
 };
 
+// 测试格式化：故意添加不规范的空格和缩进
+const   test   =   "hello"   ;
+
 export default App;
