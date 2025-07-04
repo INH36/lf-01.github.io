@@ -1,4 +1,4 @@
-// 性能优化：延迟初始化地图
+
 function initMap() {
    
     window._AMapSecurityConfig = {
@@ -52,28 +52,5 @@ function initMap() {
 
 }
 
-// 使用Intersection Observer实现懒加载
-function setupMapLazyLoading() {
-    const mapContainer = document.getElementById('container');
-    if (!mapContainer) return;
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                setTimeout(initMap, 100);
-                observer.unobserve(entry.target);
-            }
-        });
-    }, {
-        rootMargin: '50px' // 提前50px开始加载
-    });
-
-    observer.observe(mapContainer);
-}
-
-// 页面加载完成后设置懒加载
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setupMapLazyLoading);
-} else {
-    setupMapLazyLoading();
-}
+initMap()

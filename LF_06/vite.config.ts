@@ -30,8 +30,8 @@ export default defineConfig({
                id.includes('react-router') || id.includes('react-redux')) {
               return 'react-vendor';
             }
-            else if(id.includes('antd')) {
-              return 'antd-vendor';
+            else if(id.includes('ant')) {
+              return 'ant-vendor';
             } else if(id.includes('rc')) {
               return 'rc-vendor';
             }else {

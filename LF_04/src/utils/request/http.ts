@@ -49,11 +49,8 @@ http.interceptors.response.use(
     return response;
   },
   (error) => {
-    // 显示错误警告弹框
     let errorMessage = '请求失败，请稍后重试';
-    
     if (error.response) {
-      // 服务器响应了错误状态码
       const status = error.response.status;
       switch (status) {
         case 400:
@@ -81,14 +78,11 @@ http.interceptors.response.use(
           errorMessage = `请求失败 (${status})`;
       }
     } else if (error.request) {
-      // 请求已发出但没有收到响应
       errorMessage = '网络连接失败，请检查网络';
     } else {
-      // 其他错误
       errorMessage = error.message || '未知错误';
     }
     
-    // 触发警告弹框
     warnManager.show(errorMessage);
     
     return Promise.reject(error);

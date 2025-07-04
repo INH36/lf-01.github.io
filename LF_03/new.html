@@ -86,7 +86,53 @@
             </span>
         </div>
         <div id="new_info" class="w-4/5 flex flex-wrap items-center justify-center gap-16">
-
+            <div class="w-80 flex flex-col gap-8 cursor-pointer overflow-hidden rounded-lg bg-gray-200"
+                data-index="${index}">
+                <div class="w-full h-[500px] relative overflow-hidden">
+                    <div class="w-full h-full bg-slate-300 object-cover thumbnail-img"></div>
+                </div>
+                <div
+                    class="flex flex-col py-3 justify-center items-center gap-4 transition-colors duration-200 hover:text-[#ff350d]">
+                    <span class="h-6 w-2/3 bg-gray-300"></span>
+                    <span class="h-6 w-2/3 bg-gray-300"></span>
+                </div>
+            </div>
+            <div class="w-80 flex flex-col gap-8 cursor-pointer overflow-hidden rounded-lg bg-gray-200"
+                data-index="${index}">
+                <div class="w-full h-[500px] relative overflow-hidden"
+                    data-thumbnail="./img${item.thumbnail}" data-image="./img${item.image}">
+                    <div class="w-full h-full bg-slate-300 object-cover thumbnail-img"></div>
+                </div>
+                <div
+                    class="flex flex-col py-3 justify-center items-center gap-4 transition-colors duration-200 hover:text-[#ff350d]">
+                    <span class="h-6 w-2/3 bg-gray-300"></span>
+                    <span class="h-6 w-2/3 bg-gray-300"></span>
+                </div>
+            </div>
+            <div class="w-80 flex flex-col gap-8 cursor-pointer overflow-hidden rounded-lg bg-gray-200"
+                data-index="${index}">
+                <div class="w-full h-[500px] relative overflow-hidden transition-all duration-300 hover:scale-[1.05] image-container lazy-load-placeholder"
+                    data-thumbnail="./img${item.thumbnail}" data-image="./img${item.image}">
+                    <div class="w-full h-full bg-slate-300 object-cover thumbnail-img"></div>
+                </div>
+                <div
+                    class="flex flex-col py-3 justify-center items-center gap-4 transition-colors duration-200 hover:text-[#ff350d]">
+                    <span class="h-6 w-2/3 bg-gray-300"></span>
+                    <span class="h-6 w-2/3 bg-gray-300"></span>
+                </div>
+            </div>
+            <div class="w-80 flex flex-col gap-8 cursor-pointer overflow-hidden rounded-lg bg-gray-200"
+                data-index="${index}">
+                <div class="w-full h-[500px] relative overflow-hidden"
+                    data-thumbnail="./img${item.thumbnail}" data-image="./img${item.image}">
+                    <div class="w-full h-full bg-slate-300 object-cover thumbnail-img"></div>
+                </div>
+                <div
+                    class="flex flex-col py-3 justify-center items-center gap-4 transition-colors duration-200 hover:text-[#ff350d]">
+                    <span class="h-6 w-2/3 bg-gray-300"></span>
+                    <span class="h-6 w-2/3 bg-gray-300"></span>
+                </div>
+            </div>
         </div>
 
         <!-- 分页器 -->
@@ -111,7 +157,7 @@
                     </div>
 
                     <div id="total-info-container" class="flex items-center">
-                        
+
                     </div>
 
                     <!-- 下一页按钮 -->

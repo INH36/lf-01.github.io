@@ -119,7 +119,6 @@ const Home: React.FC = () => {
         }
 
         const { scrollTop, clientHeight, scrollHeight } = hotRef.current;
-        // 当滚动到距离底部10px时加载更多
         if (scrollTop + clientHeight >= scrollHeight - 10) {
             fetchRepositories(page + 1);
         }

@@ -85,6 +85,4 @@ const PageLoading: React.FC = memo(() => {
   )
 })
 
-
-// 使用memo导出组件
 export default PageLoading;

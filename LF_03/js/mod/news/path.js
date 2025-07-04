@@ -2,15 +2,13 @@ import { getHotPageList } from '../../../api/index.js'
 import { init as imageInit } from './image.js'
 import { init as pagerInit } from './pager.js'
 
-// 加载页面数据，不刷新整个页面
+// 加载页面数据
 export const loadPageData = async () => {
-    // 不刷新整个页面，而是重新获取数据并更新内容
     const { data, links } = await getNewList()
     await imageInit(data)
     await pagerInit(links)
 }
 
-// 获取当前URL参数
 export const getCurrentParams = () => {
     const params = new URLSearchParams(window.location.search)
     return {
@@ -19,7 +17,6 @@ export const getCurrentParams = () => {
     }
 }
 
-// 更新URL参数
 export const updateURL = (page, pagesize) => {
     const url = new URL(window.location)
     url.searchParams.set('page', page)
@@ -27,7 +24,6 @@ export const updateURL = (page, pagesize) => {
     window.history.pushState({}, '', url)
 }
 
-// 跳转到指定页面
 export const goToPage = (page, pagesize) => {
     updateURL(page, pagesize)
     loadPageData()

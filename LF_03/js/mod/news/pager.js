@@ -132,7 +132,6 @@ const jumpToPage = () => {
         goToPage(targetPage, pagesize)
     } else {
         alert(`请输入1-${maxPage}之间的页码`)
-        // 恢复输入框的值为当前页码
         const params = getCurrentParams()
         pageNumInput.value = params.page || 1
     }

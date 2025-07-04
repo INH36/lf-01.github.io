@@ -4,7 +4,7 @@ const getNewPageItemTem = (data) => {
         return `
             <div class="w-80 flex flex-col gap-8 cursor-pointer" data-index="${index}">
                 <div class="w-full h-[500px] relative overflow-hidden rounded-lg transition-all duration-300 hover:scale-[1.05] image-container lazy-load-placeholder" data-thumbnail="./img${item.thumbnail}" data-image="./img${item.image}">
-                    <img class="w-full h-full object-cover thumbnail-img" src="./img${item.thumbnail}" alt="" />
+                    <img class="w-full h-full bg-slate-200 object-cover thumbnail-img" src="./img${item.thumbnail}" alt="" />
                 </div>
                 <div class="flex flex-col gap-4 transition-colors duration-200 hover:text-[#ff350d]">
                     <p class="text-xl font-normal truncate">${item.title}</p>
@@ -21,29 +21,19 @@ const lazyLoadImages = () => {
     const imageContainers = document.querySelectorAll('.lazy-load-placeholder');
     imageContainers.forEach(container => {
         const imagePath = container.dataset.image;
-        // 创建原图元素
         const mainImg = new Image();
         mainImg.className = 'w-full h-full object-cover main-img';
         mainImg.alt = '';
-        
-        // 原图加载完成后的处理
         mainImg.onload = () => {
-            // 添加原图到容器
             container.appendChild(mainImg);
-            
-            // 延迟一点时间让用户看到加载过程
             setTimeout(() => {
-                mainImg.classList.add('loaded');
                 container.classList.add('loaded');
             }, 500);
         };
-        
-        // 原图加载失败的处理
         mainImg.onerror = () => {
             console.warn('原图加载失败，保持显示缩略图:', imagePath);
             container.classList.add('loaded');
-        };
-        
+        };    
         setTimeout(() => {
             mainImg.src = imagePath;
         }, 200);
