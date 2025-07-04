@@ -1,24 +1,24 @@
 .battle-container {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    .main {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	.main {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
 
-    .player-content {
-        width: 75%;
-    }
+	.player-content {
+		width: 75%;
+	}
 
-    .reset-btn {
-        margin-top: 8rem;
-        padding: 10px 42px;
-        border-radius: 12px;
-        background-color: #bc574b;
-        color: aliceblue;
-    }
+	.reset-btn {
+		margin-top: 8rem;
+		padding: 10px 42px;
+		border-radius: 12px;
+		background-color: #bc574b;
+		color: aliceblue;
+	}
 }

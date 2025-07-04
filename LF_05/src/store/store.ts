@@ -3,11 +3,11 @@ import layoutReducer from './silce/layoutSlice';
 import { combineReducers } from 'redux';
 
 const rootReducer = combineReducers({
-    layout: layoutReducer,
+	layout: layoutReducer,
 });
 
 export const store = configureStore({
-    reducer: rootReducer,
+	reducer: rootReducer,
 });
 
 export type RootState = ReturnType<typeof store.getState>;

@@ -1,3 +1,3 @@
 interface Window {
-    NProgress?: import('nprogress').NProgress;
+	NProgress?: import('nprogress').NProgress;
 }
